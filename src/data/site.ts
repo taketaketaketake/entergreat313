@@ -27,6 +27,7 @@ export const nav = [
 
 // Secondary pages — footer only, keeps the navbar focused.
 export const footerNav = [
+  { label: "Events", href: "/events" },
   { label: "Partnerships", href: "/partnerships" },
   { label: "Media", href: "/media" },
   { label: "Event Gallery", href: "/gallery" },
