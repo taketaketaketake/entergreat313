@@ -1,15 +1,55 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { site, coreValues, quotes, testimonials } from "../data/site";
 ---
 
 <BaseLayout title="About">
-  <div class="mx-auto max-w-4xl px-4 py-12">
-    <h1 class="text-3xl font-bold">About Enter-Great 313</h1>
-    <!-- Phase 1: migrate the org's story, mission, and testimonials from entergreat313.org -->
-    <p class="mt-4 text-neutral-700">
-      Enter-Great 313 helps people coming home from long-term incarceration make a real
-      transition back into society — with peer support, mentorship, employment help, and
-      community rooted in Detroit.
+  <section class="bg-stone-50">
+    <div class="mx-auto max-w-4xl px-4 py-16">
+      <h1 class="text-4xl font-extrabold tracking-tight text-emerald-950">About Enter-Great 313</h1>
+      <p class="mt-6 text-lg leading-relaxed text-stone-700">{site.mission}</p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-4 py-12">
+    <h2 class="text-2xl font-bold text-emerald-950">Who we serve</h2>
+    <p class="mt-4 leading-relaxed text-stone-700">
+      We are a community-based organization in Detroit supporting long-term-serving returning
+      citizens as they transition back into society. Coming home after years inside means facing
+      employment barriers, strained family ties, limited resources, and real mental health
+      struggles — often all at once. We meet those challenges with mentorship, life-skills
+      training, workforce support, and peer networks built by people who understand the journey.
     </p>
-  </div>
+    <blockquote class="mt-8 border-l-4 border-emerald-800 pl-5 text-lg font-medium text-emerald-950">
+      “{quotes[0]}”
+    </blockquote>
+  </section>
+
+  <section class="bg-stone-50">
+    <div class="mx-auto max-w-4xl px-4 py-12">
+      <h2 class="text-2xl font-bold text-emerald-950">Our values</h2>
+      <ul class="mt-6 flex flex-wrap gap-3">
+        {coreValues.map((value) => (
+          <li class="rounded-full border border-emerald-800 px-5 py-2 font-semibold text-emerald-900">
+            {value}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-4 py-12">
+    <h2 class="text-2xl font-bold text-emerald-950">In their words</h2>
+    <div class="mt-6 space-y-6">
+      {testimonials.map((t) => (
+        <figure class="rounded-lg border border-stone-200 p-6">
+          <blockquote class="leading-relaxed text-stone-800">“{t.quote}”</blockquote>
+          <figcaption class="mt-3 text-sm">
+            <span class="font-bold text-emerald-950">{t.name}</span>
+            <span class="text-stone-600"> · {t.role}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
 </BaseLayout>

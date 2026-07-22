@@ -37,26 +37,29 @@ Content collections are defined in `src/content.config.ts` with Zod schemas. One
 | featured | boolean | Featured videos surface on homepage/donate page |
 | description | string (optional) | Short context line |
 
-### LetterTemplate (Phase 2 — `src/data/letterTemplates.ts`, not a collection)
+### LetterTemplate (`src/data/letterTemplates.ts`, not a collection)
 
 | Field | Type | Purpose |
 |-------|------|---------|
 | id | string | Template key |
 | name | string | e.g. "Parole Support Letter" |
 | audience | string | Who this letter is for (parole board, judge via attorney, person inside) |
-| sections | Section[] | Ordered composable sections |
-| Section.heading | string | e.g. "How I Know This Person" |
-| Section.prompt | string | Guidance on what makes this section persuasive |
-| Section.required | boolean | Some sections (identification) can't be skipped |
+| intro | string | Shown on the template chooser card |
+| guidance | string[] | "Before you write" bullets (mailing rules, tone, MDOC number) |
+| sections | LetterSection[] | Ordered composable sections |
+| LetterSection.id | string | Stable key for state |
+| LetterSection.heading | string | e.g. "How I Know This Person" |
+| LetterSection.prompt | string | Guidance on what makes this section persuasive |
+| LetterSection.required | boolean | Required sections gate PDF output; optional ones can be excluded |
 
-### Destination (Phase 2 — `src/data/destinations.ts`)
+### Destination (`src/data/destinations.ts`)
 
 | Field | Type | Purpose |
 |-------|------|---------|
 | id | string | Key |
 | name | string | e.g. "Michigan Parole Board" |
-| addressLines | string[] | Mailing address |
-| guidance | string | e.g. "Include the person's MDOC number on every page" |
+| addressLines | string[] | Mailing address; empty array = user enters a custom address |
+| guidance | string | Routing/formatting rule, always including "verify before mailing" where an address ships |
 
 Custom (user-typed) destinations are always allowed alongside these.
 

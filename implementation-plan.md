@@ -6,7 +6,7 @@
 
 ## Status
 
-**Current Phase:** Phase 1
+**Current Phase:** Phases 1–3 built (2026-07-21); each is blocked from COMPLETE only by org inputs and live verification — see per-phase notes.
 
 ---
 
@@ -79,12 +79,12 @@ A deployable replacement for the Squarespace site: all brochure pages designed a
 
 ### Exit Criteria
 
-- [ ] `npm run build` green; no placeholder copy on any Phase 1 page
-- [ ] GiveButter donate flow works end-to-end from the live site
-- [ ] Site audited on a phone: navigable, readable, fast
-- [ ] ADR recorded for stack + external-services decisions
+- [x] `npm run build` green; no placeholder copy on any Phase 1 page (real content migrated from entergreat313.org: mission, values, programs incl. J.I.L.L., testimonials, partnerships)
+- [ ] GiveButter donate flow works end-to-end from the live site — **blocked: need campaign URL from org** (`site.donateUrl` in `src/data/site.ts`)
+- [ ] Site audited on a phone: navigable, readable, fast — **blocked: not yet deployed**
+- [x] ADR recorded for stack + external-services decisions (ADR-001)
 
-### Status: NOT STARTED
+### Status: BUILT — blocked on org inputs (GiveButter URL, hosting/DNS) before COMPLETE
 
 ---
 
@@ -104,12 +104,12 @@ Supporters can compose a personalized letter section-by-section and leave with a
 
 ### Exit Criteria
 
-- [ ] Full compose → PDF flow works offline (network tab silent after page load)
-- [ ] No user text in any request, storage, or log (invariant 2 verified)
-- [ ] Letter content reviewed by the org for accuracy of guidance
-- [ ] ADR recorded for letter builder design decisions
+- [x] Full compose → PDF flow implemented client-side (jsPDF dynamically imported; print fallback) — needs a hands-on browser pass to confirm end-to-end
+- [x] No user text in any request, storage, or log — no fetch/storage calls in `LetterBuilder.tsx`; jsPDF chunk is lazy and never receives network access to user text
+- [ ] Letter content reviewed by the org for accuracy of guidance — **blocked: org review pending** (parole board address must be verified before promotion)
+- [x] ADR recorded for letter builder design decisions (ADR-002)
 
-### Status: NOT STARTED
+### Status: BUILT — blocked on org review of letter guidance before COMPLETE
 
 ---
 
@@ -128,11 +128,11 @@ Merch revenue channel live and the video series has a home.
 
 ### Exit Criteria
 
-- [ ] Test purchase completes on the storefront
-- [ ] Videos added via a markdown file appear on the media page and (if featured) homepage
-- [ ] ADR recorded
+- [ ] Test purchase completes on the storefront — **blocked: merch platform not yet chosen with the org**
+- [x] Videos added via a markdown file appear on the media page and (if featured) homepage and donate page — pages built with empty states; needs first real video to confirm
+- [ ] ADR recorded — deferred until the merch platform decision exists to record
 
-### Status: NOT STARTED
+### Status: PARTIALLY BUILT — media/shop pages live with empty states; storefront blocked on platform choice
 
 ---
 

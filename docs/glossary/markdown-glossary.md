@@ -310,6 +310,8 @@ Append-only where possible.
 
 ## docs/decisions/ (Architecture Decision Records — ADRs)
 
+Existing ADRs: `adr-001-static-astro-stack.md`, `adr-002-letter-builder-design.md`.
+
 **Note on ADR Coverage**
 
 All files under `docs/decisions/` follow the same contract:

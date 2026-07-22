@@ -15,24 +15,31 @@ const rendered = await Promise.all(
 );
 ---
 
-<BaseLayout title="Events">
-  <div class="mx-auto max-w-4xl px-4 py-12">
-    <h1 class="text-3xl font-bold">Events</h1>
-    <div class="mt-8 space-y-6">
+<BaseLayout title="Events" description="Weekly support group meetings and community events from Enter-Great 313 in Detroit.">
+  <div class="mx-auto max-w-4xl px-4 py-16">
+    <h1 class="text-4xl font-extrabold tracking-tight text-emerald-950">Events</h1>
+    <p class="mt-4 max-w-2xl text-lg text-stone-700">
+      Everyone is welcome — returning citizens, family, and supporters. No referral needed.
+    </p>
+    <div class="mt-10 space-y-6">
       {rendered.map(({ event, Content }) => (
-        <section class="rounded border border-neutral-200 p-5">
-          <h2 class="text-xl font-bold">{event.data.title}</h2>
-          <p class="mt-1 text-sm text-neutral-600">
+        <section class="rounded-lg border border-stone-200 p-6">
+          <h2 class="text-2xl font-bold text-emerald-950">{event.data.title}</h2>
+          <p class="mt-1 font-medium text-stone-600">
             {event.data.recurring ??
               event.data.date.toLocaleString("en-US", { dateStyle: "long", timeStyle: "short" })}
             {event.data.endTime && !event.data.recurring ? ` – ${event.data.endTime}` : ""}
             {" · "}{event.data.address ?? event.data.location}
           </p>
-          <div class="prose prose-neutral mt-3">
+          <div class="prose prose-stone mt-4 max-w-none leading-relaxed">
             <Content />
           </div>
         </section>
       ))}
     </div>
+    <p class="mt-10 rounded-lg bg-stone-50 p-6 text-stone-700">
+      Have a question about a meeting? Call
+      <a href="tel:313-444-9671" class="font-semibold text-emerald-800 underline underline-offset-2">313-444-9671</a>.
+    </p>
   </div>
 </BaseLayout>

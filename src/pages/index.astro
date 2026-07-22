@@ -1,36 +1,135 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { site } from "../data/site";
+import VideoEmbed from "../components/VideoEmbed.astro";
+import { site, services, testimonials, quotes } from "../data/site";
 import { getCollection } from "astro:content";
 
-const events = (await getCollection("events")).sort(
-  (a, b) => a.data.date.valueOf() - b.data.date.valueOf(),
-);
+const programs = (await getCollection("programs")).sort((a, b) => a.data.order - b.data.order);
+const events = (await getCollection("events")).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+const featuredVideo = (await getCollection("videos"))
+  .filter((v) => v.data.featured)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())[0];
 ---
 
 <BaseLayout title="Home">
-  <!-- Phase 1: real hero, mission, featured video, shop teaser. Skeleton for now. -->
-  <section class="mx-auto max-w-6xl px-4 py-16">
-    <h1 class="max-w-2xl text-4xl font-bold tracking-tight">{site.name}</h1>
-    <p class="mt-4 max-w-2xl text-lg text-neutral-700">{site.tagline}</p>
-    <div class="mt-8 flex gap-4">
-      <a href="/donate" class="rounded bg-neutral-900 px-5 py-3 font-semibold text-white">Donate</a>
-      <a href="/letters" class="rounded border border-neutral-900 px-5 py-3 font-semibold">Write a Letter of Support</a>
+  <section class="bg-stone-50">
+    <div class="mx-auto max-w-6xl px-4 py-20 lg:py-28">
+      <h1 class="max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-emerald-950 sm:text-5xl">
+        Rebuilding lives with support and opportunity.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-stone-700">
+        {site.mission}
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="/donate" class="rounded-md bg-emerald-800 px-6 py-3 text-lg font-semibold text-white hover:bg-emerald-700">
+          Donate Now
+        </a>
+        <a href="/letters" class="rounded-md border-2 border-emerald-800 px-6 py-3 text-lg font-semibold text-emerald-900 hover:bg-emerald-50">
+          Write a Letter of Support
+        </a>
+      </div>
+      <p class="mt-8 text-sm text-stone-600">
+        Support group every Tuesday, 6:00–7:30 PM · 1010 Antietam, Detroit ·
+        <a href="/events" class="font-semibold text-emerald-800 underline underline-offset-2">Come sit with us</a>
+      </p>
     </div>
   </section>
 
-  <section class="mx-auto max-w-6xl px-4 py-8">
-    <h2 class="text-2xl font-bold">Upcoming</h2>
-    <ul class="mt-4 space-y-3">
-      {events.map((event) => (
-        <li class="rounded border border-neutral-200 p-4">
-          <p class="font-semibold">{event.data.title}</p>
-          <p class="text-sm text-neutral-600">
-            {event.data.recurring ?? event.data.date.toLocaleDateString("en-US", { dateStyle: "long" })}
-            {" · "}{event.data.location}
-          </p>
+  <section class="bg-emerald-900">
+    <blockquote class="mx-auto max-w-4xl px-4 py-14 text-center">
+      <p class="text-xl font-medium leading-relaxed text-white sm:text-2xl">
+        “{quotes[0]}”
+      </p>
+    </blockquote>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <h2 class="text-3xl font-bold text-emerald-950">What we do</h2>
+    <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((service) => (
+        <li class="rounded-lg border border-stone-200 bg-white p-5 text-lg font-semibold text-stone-800">
+          {service}
         </li>
       ))}
     </ul>
+    <div class="mt-8">
+      <a href="/programs" class="font-semibold text-emerald-800 underline underline-offset-4">
+        See our programs in detail
+      </a>
+    </div>
+  </section>
+
+  <section class="bg-stone-50">
+    <div class="mx-auto max-w-6xl px-4 py-16">
+      <h2 class="text-3xl font-bold text-emerald-950">Programs</h2>
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        {programs.map((program) => (
+          <a href="/programs" class="rounded-lg border border-stone-200 bg-white p-6 hover:border-emerald-700">
+            <h3 class="text-xl font-bold text-emerald-950">{program.data.title}</h3>
+            <p class="mt-2 leading-relaxed text-stone-700">{program.data.summary}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {featuredVideo && (
+    <section class="mx-auto max-w-4xl px-4 py-16">
+      <h2 class="text-3xl font-bold text-emerald-950">See the work</h2>
+      <div class="mt-8">
+        <VideoEmbed youtubeId={featuredVideo.data.youtubeId} title={featuredVideo.data.title} />
+        <p class="mt-3 font-semibold">{featuredVideo.data.title}</p>
+        {featuredVideo.data.description && <p class="text-stone-600">{featuredVideo.data.description}</p>}
+      </div>
+      <a href="/media" class="mt-6 inline-block font-semibold text-emerald-800 underline underline-offset-4">
+        Watch more stories
+      </a>
+    </section>
+  )}
+
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <h2 class="text-3xl font-bold text-emerald-950">In their words</h2>
+    <div class="mt-8 grid gap-6 lg:grid-cols-3">
+      {testimonials.map((t) => (
+        <figure class="flex flex-col justify-between rounded-lg border border-stone-200 bg-white p-6">
+          <blockquote class="leading-relaxed text-stone-800">“{t.quote}”</blockquote>
+          <figcaption class="mt-4 text-sm">
+            <span class="font-bold text-emerald-950">{t.name}</span>
+            <span class="text-stone-600"> · {t.role}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-stone-50">
+    <div class="mx-auto max-w-6xl px-4 py-16">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 class="text-3xl font-bold text-emerald-950">Wear the mission</h2>
+          <p class="mt-2 max-w-xl text-stone-700">
+            Apparel for supporters — every purchase helps fund mentorship, meetings, and reentry support in Detroit.
+          </p>
+        </div>
+        <a
+          href={site.shopUrl || "/shop"}
+          class="rounded-md border-2 border-emerald-800 px-5 py-2.5 font-semibold text-emerald-900 hover:bg-emerald-50"
+        >
+          {site.shopUrl ? "Visit the Store" : "Shop — coming soon"}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-emerald-950">
+    <div class="mx-auto max-w-4xl px-4 py-16 text-center">
+      <h2 class="text-3xl font-bold text-white">“{quotes[1]}”</h2>
+      <a
+        href="/donate"
+        class="mt-8 inline-block rounded-md bg-white px-8 py-3 text-lg font-bold text-emerald-950 hover:bg-emerald-100"
+      >
+        Join us — Donate
+      </a>
+    </div>
   </section>
 </BaseLayout>

@@ -10,15 +10,19 @@ const rendered = await Promise.all(
 );
 ---
 
-<BaseLayout title="Programs">
-  <div class="mx-auto max-w-4xl px-4 py-12">
-    <h1 class="text-3xl font-bold">Programs</h1>
-    <div class="mt-8 space-y-10">
+<BaseLayout title="Programs" description="Life skills, mentorship, peer support, and employment training for returning citizens in Detroit.">
+  <div class="mx-auto max-w-4xl px-4 py-16">
+    <h1 class="text-4xl font-extrabold tracking-tight text-emerald-950">Programs</h1>
+    <p class="mt-4 max-w-2xl text-lg text-stone-700">
+      Built to help returning citizens rebuild their lives with guidance, encouragement, and real
+      opportunities for growth.
+    </p>
+    <div class="mt-10 space-y-10">
       {rendered.map(({ program, Content }) => (
-        <section>
-          <h2 class="text-xl font-bold">{program.data.title}</h2>
-          <p class="mt-1 text-neutral-700">{program.data.summary}</p>
-          <div class="prose prose-neutral mt-3">
+        <section class="rounded-lg border border-stone-200 p-6">
+          <h2 class="text-2xl font-bold text-emerald-950">{program.data.title}</h2>
+          <p class="mt-1 font-medium text-stone-600">{program.data.summary}</p>
+          <div class="prose prose-stone mt-4 max-w-none leading-relaxed">
             <Content />
           </div>
         </section>

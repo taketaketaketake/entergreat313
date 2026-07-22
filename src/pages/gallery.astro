@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getImage } from "astro:assets";
+
+// Drop event photos into src/assets/gallery/ — they appear here automatically.
+const images = Object.values(
+  import.meta.glob<{ default: ImageMetadata }>("../assets/gallery/*.{jpg,jpeg,png,webp}", {
+    eager: true,
+  }),
+);
+const optimized = await Promise.all(
+  images.map((img) => getImage({ src: img.default, width: 800, format: "webp" })),
+);
+---
+
+<BaseLayout title="Event Gallery">
+  <div class="mx-auto max-w-6xl px-4 py-16">
+    <h1 class="text-4xl font-extrabold tracking-tight text-emerald-950">Event Gallery</h1>
+    {optimized.length > 0 ? (
+      <div class="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3">
+        {optimized.map((image) => (
+          <img
+            src={image.src}
+            alt="Enter-Great 313 community event"
+            loading="lazy"
+            class="aspect-square w-full rounded-lg object-cover"
+          />
+        ))}
+      </div>
+    ) : (
+      <p class="mt-10 rounded-lg border border-dashed border-stone-300 p-8 text-stone-600">
+        Photos from meetings and community events are on the way — the org's photo library is
+        being migrated from the old site.
+      </p>
+    )}
+  </div>
+</BaseLayout>

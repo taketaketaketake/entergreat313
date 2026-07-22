@@ -1,9 +1,7 @@
 ---
 title: Life Skills & Mentorship
-summary: One-on-one mentorship and practical life skills — financial literacy, housing, and community connection.
+summary: One-on-one mentorship and practical skills — financial responsibility, healthy living, and community connection.
 order: 3
 ---
 
-<!-- Placeholder — replace with the org's own program copy during Phase 1 content migration. -->
-
-Life skills development, mentorship, financial literacy education, and housing support.
+Positive mentorship and hands-on life skills development: financial responsibility, healthy and clean living conditions, and the everyday practical knowledge that makes independence possible after long-term incarceration.

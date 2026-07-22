@@ -1,9 +1,7 @@
 ---
-title: Employment Training & Job Placement
-summary: Job readiness training and connections to employers who hire returning citizens.
+title: Employment Opportunities & Training
+summary: Interview preparation, confidence building, and connections to employers who believe in second chances.
 order: 2
 ---
 
-<!-- Placeholder — replace with the org's own program copy during Phase 1 content migration. -->
-
-Employment training and job placement assistance for returning citizens.
+Finding work with a record is one of the hardest parts of coming home. We help members prepare for interviews, build confidence, and connect with real job opportunities through employers and partners who believe in second chances.

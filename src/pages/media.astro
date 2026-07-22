@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import VideoEmbed from "../components/VideoEmbed.astro";
+import { site } from "../data/site";
+import { getCollection } from "astro:content";
+
+const videos = (await getCollection("videos")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<BaseLayout title="Media" description="Stories from Enter-Great 313 — the program, its members, and the mission.">
+  <div class="mx-auto max-w-5xl px-4 py-16">
+    <h1 class="text-4xl font-extrabold tracking-tight text-emerald-950">Media</h1>
+    <p class="mt-4 max-w-2xl text-lg text-stone-700">
+      Stories from the program — the people, the work, and why it matters.
+    </p>
+
+    {videos.length > 0 ? (
+      <div class="mt-10 grid gap-10 md:grid-cols-2">
+        {videos.map((video) => (
+          <div>
+            <VideoEmbed youtubeId={video.data.youtubeId} title={video.data.title} />
+            <p class="mt-3 font-semibold text-emerald-950">{video.data.title}</p>
+            {video.data.description && <p class="mt-1 text-sm text-stone-600">{video.data.description}</p>}
+          </div>
+        ))}
+      </div>
+    ) : (
+      <div class="mt-10 rounded-lg border border-dashed border-stone-300 p-8 text-stone-600">
+        <p class="font-semibold text-stone-800">Video series coming soon.</p>
+        <p class="mt-2">
+          We're filming a series about the program, its members, and the mission. Follow along on
+          <a href={site.socials.facebook} class="font-semibold text-emerald-800 underline underline-offset-2"> Facebook</a> and
+          <a href={site.socials.instagram} class="font-semibold text-emerald-800 underline underline-offset-2"> Instagram</a> until it lands here.
+        </p>
+      </div>
+    )}
+  </div>
+</BaseLayout>

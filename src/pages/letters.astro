@@ -1,22 +1,41 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import LetterBuilder from "../components/LetterBuilder.tsx";
 ---
 
 <BaseLayout
   title="Write a Letter of Support"
-  description="Compose a personalized letter of support for a returning citizen — for parole boards, courts, or a loved one inside."
+  description="Compose a personalized letter of support for a returning citizen — for parole boards, courts, or a loved one inside. Free, private, ready to print and mail."
 >
-  <div class="mx-auto max-w-4xl px-4 py-12">
-    <h1 class="text-3xl font-bold">Write a Letter of Support</h1>
-    <p class="mt-4 text-neutral-700">
-      Letters from family, employers, and community members carry real weight with parole
-      boards and courts — when they're personal. This tool walks you through writing one,
-      section by section, and gives you a finished letter ready to print and mail, with the
-      right address and formatting.
+  <div class="mx-auto max-w-4xl px-4 py-16">
+    <h1 class="text-4xl font-extrabold tracking-tight text-emerald-950">Write a Letter of Support</h1>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-stone-700">
+      Letters from family, employers, and community members carry real weight with parole boards
+      and courts — when they're personal. This tool walks you through writing one, section by
+      section, then gives you a finished letter ready to print and mail.
     </p>
-    <!-- Phase 2: letter builder island mounts here. Everything stays in your browser. -->
-    <p class="mt-8 rounded border border-dashed border-neutral-300 p-4 text-sm text-neutral-500">
-      The letter builder is coming soon.
-    </p>
+
+    <div class="mt-6 rounded-lg bg-stone-50 p-5 text-sm leading-relaxed text-stone-700">
+      <p class="font-semibold text-emerald-950">Three things to know</p>
+      <ul class="mt-2 list-disc space-y-1 pl-5">
+        <li>
+          <strong>Personal letters work; form letters don't.</strong> Decision-makers discount
+          identical mass letters — that's why this tool asks you to write each part yourself.
+        </li>
+        <li>
+          <strong>Letters travel by mail, not email.</strong> Courts and parole boards don't act
+          on email from the public. You'll get a printable letter and the right mailing route —
+          including when to send it through an attorney instead.
+        </li>
+        <li>
+          <strong>Everything stays on your device.</strong> Nothing you type is sent to us or
+          anyone else.
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-10">
+      <LetterBuilder client:load />
+    </div>
   </div>
 </BaseLayout>

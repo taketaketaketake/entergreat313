@@ -4,17 +4,19 @@
 
 ### Implemented
 
-- Astro 5 project with Tailwind CSS (via `@tailwindcss/vite`), static output
-- Content collections defined for `events`, `programs`, `videos` with sample content
-- Base layout with site header/footer navigation
-- Placeholder pages for all top-level routes
+- Astro 5 + Tailwind 4 + Preact integration, static output; Libre Franklin variable font
+- Content collections (`events`, `programs`, `videos`) populated with content migrated from entergreat313.org (mission, programs incl. J.I.L.L., testimonials, partnerships)
+- Full page set: home, about, programs, events, partnerships, gallery, media, donate, letters, shop, contact — designed, mobile-first, sticky header with mobile menu
+- Letter builder island (`src/components/LetterBuilder.tsx`): 4 templates × section composer × destination directory → jsPDF download (lazy-loaded) or print window; fully client-side
+- Gallery page auto-globs `src/assets/gallery/`; media page renders the `videos` collection with an empty state
 
-### Not Yet Implemented
+### Not Yet Implemented / Blocked on Org Inputs
 
-- Real page designs and content migration from entergreat313.org (Phase 1)
-- GiveButter donate embed (Phase 1)
-- Letter builder island + PDF generation (Phase 2)
-- Merch storefront integration and media page (Phase 3)
+- GiveButter embed on /donate (needs campaign URL — placeholder links to old site meanwhile)
+- YouTube channel link + first video entries (site renders empty states until then)
+- Merch storefront (platform choice pending; /shop shows coming-soon)
+- Deployment + DNS handover (needs domain access)
+- Gallery photos (org's photo library not yet migrated)
 - Optional git-based editing UI (deferred)
 
 ## Layers

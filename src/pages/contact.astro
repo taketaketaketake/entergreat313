@@ -4,15 +4,36 @@ import { site } from "../data/site";
 ---
 
 <BaseLayout title="Contact">
-  <div class="mx-auto max-w-4xl px-4 py-12">
-    <h1 class="text-3xl font-bold">Contact</h1>
-    <div class="mt-6 space-y-2 text-neutral-700">
-      <p>{site.address}</p>
-      <p><a href={`tel:${site.phone}`} class="underline">{site.phone}</a></p>
-    </div>
-    <div class="mt-6 flex gap-4">
-      <a href={site.socials.facebook} class="underline">Facebook</a>
-      <a href={site.socials.instagram} class="underline">Instagram</a>
+  <div class="mx-auto max-w-4xl px-4 py-16">
+    <h1 class="text-4xl font-extrabold tracking-tight text-emerald-950">Contact</h1>
+    <div class="mt-8 grid gap-8 sm:grid-cols-2">
+      <div class="rounded-lg border border-stone-200 p-6">
+        <h2 class="font-bold text-emerald-950">Visit us</h2>
+        <p class="mt-2 text-stone-700">{site.address}</p>
+        <a
+          href={`https://maps.google.com/?q=${encodeURIComponent(site.address)}`}
+          class="mt-2 inline-block text-sm font-semibold text-emerald-800 underline underline-offset-2"
+        >
+          Open in Maps
+        </a>
+      </div>
+      <div class="rounded-lg border border-stone-200 p-6">
+        <h2 class="font-bold text-emerald-950">Call us</h2>
+        <p class="mt-2">
+          <a href={`tel:${site.phone}`} class="text-lg font-semibold text-emerald-800">{site.phone}</a>
+        </p>
+      </div>
+      <div class="rounded-lg border border-stone-200 p-6">
+        <h2 class="font-bold text-emerald-950">Weekly meeting</h2>
+        <p class="mt-2 text-stone-700">Every Tuesday, 6:00–7:30 PM<br />1010 Antietam, Detroit</p>
+      </div>
+      <div class="rounded-lg border border-stone-200 p-6">
+        <h2 class="font-bold text-emerald-950">Follow along</h2>
+        <div class="mt-2 flex flex-col gap-1">
+          <a href={site.socials.facebook} class="font-semibold text-emerald-800 underline underline-offset-2">Facebook</a>
+          <a href={site.socials.instagram} class="font-semibold text-emerald-800 underline underline-offset-2">Instagram</a>
+        </div>
+      </div>
     </div>
   </div>
 </BaseLayout>
