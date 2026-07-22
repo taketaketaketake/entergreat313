@@ -21,11 +21,16 @@ export const nav = [
   { label: "About", href: "/about" },
   { label: "Programs", href: "/programs" },
   { label: "Events", href: "/events" },
+  { label: "Write a Letter", href: "/letters" },
+  { label: "Contact", href: "/contact" },
+];
+
+// Secondary pages — footer only, keeps the navbar focused.
+export const footerNav = [
   { label: "Partnerships", href: "/partnerships" },
   { label: "Media", href: "/media" },
-  { label: "Write a Letter", href: "/letters" },
+  { label: "Event Gallery", href: "/gallery" },
   { label: "Shop", href: "/shop" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const coreValues = [

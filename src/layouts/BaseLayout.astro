@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { site, nav } from "../data/site";
+import { site, nav, footerNav } from "../data/site";
 
 interface Props {
   title: string;
@@ -79,7 +79,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
     </main>
 
     <footer class="mt-20 bg-emerald-950 text-emerald-100">
-      <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <p class="text-lg font-extrabold text-white">{site.name}</p>
           <p class="mt-2 max-w-xs text-sm leading-relaxed text-emerald-200">{site.tagline}</p>
@@ -101,8 +101,15 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
           <div class="mt-2 flex flex-col gap-2">
             <a href="/donate" class="hover:underline">Donate</a>
             <a href="/letters" class="hover:underline">Write a letter of support</a>
-            <a href="/shop" class="hover:underline">Shop</a>
             <a href="/events" class="hover:underline">Come to a meeting</a>
+          </div>
+        </div>
+        <div class="text-sm">
+          <p class="font-semibold text-white">More</p>
+          <div class="mt-2 flex flex-col gap-2">
+            {footerNav.map((item) => (
+              <a href={item.href} class="hover:underline">{item.label}</a>
+            ))}
           </div>
         </div>
       </div>
