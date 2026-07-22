@@ -13,7 +13,10 @@ const optimized = await Promise.all(
 );
 ---
 
-<BaseLayout title="Event Gallery">
+<BaseLayout
+  title="Event Gallery"
+  description="Photos from Enter-Great 313 community events, support group meetings, and gatherings across Detroit."
+>
   <div class="mx-auto max-w-6xl px-4 py-16">
     <h1 class="text-4xl font-extrabold tracking-tight text-emerald-950">Event Gallery</h1>
     {optimized.length > 0 ? (

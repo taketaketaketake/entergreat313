@@ -9,7 +9,10 @@ const featuredVideo = (await getCollection("videos"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())[0];
 ---
 
-<BaseLayout title="Donate" description="Support returning citizens in Detroit — fund mentorship, meetings, and real reentry support.">
+<BaseLayout
+  title="Donate to Support Returning Citizens in Detroit"
+  description="Your donation funds weekly peer support meetings, mentorship, job training, and practical reentry help for people coming home from incarceration in Detroit."
+>
   <div class="mx-auto max-w-4xl px-4 py-16">
     <h1 class="text-4xl font-extrabold tracking-tight text-emerald-950">Donate</h1>
     <p class="mt-4 max-w-2xl text-lg leading-relaxed text-stone-700">

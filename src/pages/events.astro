@@ -14,9 +14,41 @@ const rendered = await Promise.all(
     Content: (await render(event)).Content,
   })),
 );
+
+const eventSchema = [...recurring, ...upcoming].map((event) => ({
+  "@context": "https://schema.org",
+  "@type": "Event",
+  name: event.data.title,
+  startDate: event.data.date.toISOString(),
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+  location: {
+    "@type": "Place",
+    name: event.data.location,
+    address: event.data.address ?? event.data.location,
+  },
+  organizer: {
+    "@type": "NGO",
+    name: "Enter-Great 313",
+    url: Astro.site?.toString(),
+  },
+  isAccessibleForFree: true,
+  ...(event.data.recurring && {
+    eventSchedule: {
+      "@type": "Schedule",
+      byDay: "https://schema.org/Tuesday",
+      startTime: "18:00",
+      endTime: "19:30",
+      repeatFrequency: "P1W",
+    },
+  }),
+}));
 ---
 
-<BaseLayout title="Events" description="Weekly support group meetings and community events from Enter-Great 313 in Detroit.">
+<BaseLayout
+  title="Weekly Support Group Meetings in Detroit"
+  description="Peer support group for returning citizens and justice-impacted people every Tuesday, 6:00–7:30 PM at 1010 Antietam, Detroit. Family and supporters welcome — no referral needed."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(eventSchema)} />
   <div class="mx-auto max-w-4xl px-4 py-16">
     <h1 class="text-4xl font-extrabold tracking-tight text-emerald-950">Events</h1>
     <p class="mt-4 max-w-2xl text-lg text-stone-700">
