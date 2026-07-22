@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+import { getCollection } from "astro:content";
+
+const events = (await getCollection("events")).sort(
+  (a, b) => a.data.date.valueOf() - b.data.date.valueOf(),
+);
+---
+
+<BaseLayout title="Home">
+  <!-- Phase 1: real hero, mission, featured video, shop teaser. Skeleton for now. -->
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <h1 class="max-w-2xl text-4xl font-bold tracking-tight">{site.name}</h1>
+    <p class="mt-4 max-w-2xl text-lg text-neutral-700">{site.tagline}</p>
+    <div class="mt-8 flex gap-4">
+      <a href="/donate" class="rounded bg-neutral-900 px-5 py-3 font-semibold text-white">Donate</a>
+      <a href="/letters" class="rounded border border-neutral-900 px-5 py-3 font-semibold">Write a Letter of Support</a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-8">
+    <h2 class="text-2xl font-bold">Upcoming</h2>
+    <ul class="mt-4 space-y-3">
+      {events.map((event) => (
+        <li class="rounded border border-neutral-200 p-4">
+          <p class="font-semibold">{event.data.title}</p>
+          <p class="text-sm text-neutral-600">
+            {event.data.recurring ?? event.data.date.toLocaleDateString("en-US", { dateStyle: "long" })}
+            {" · "}{event.data.location}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

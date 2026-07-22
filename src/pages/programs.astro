@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+
+const programs = (await getCollection("programs")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const rendered = await Promise.all(
+  programs.map(async (program) => ({ program, Content: (await render(program)).Content })),
+);
+---
+
+<BaseLayout title="Programs">
+  <div class="mx-auto max-w-4xl px-4 py-12">
+    <h1 class="text-3xl font-bold">Programs</h1>
+    <div class="mt-8 space-y-10">
+      {rendered.map(({ program, Content }) => (
+        <section>
+          <h2 class="text-xl font-bold">{program.data.title}</h2>
+          <p class="mt-1 text-neutral-700">{program.data.summary}</p>
+          <div class="prose prose-neutral mt-3">
+            <Content />
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

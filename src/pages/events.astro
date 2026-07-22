@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+
+const all = (await getCollection("events")).sort(
+  (a, b) => a.data.date.valueOf() - b.data.date.valueOf(),
+);
+const recurring = all.filter((e) => e.data.recurring);
+const upcoming = all.filter((e) => !e.data.recurring && e.data.date >= new Date());
+const rendered = await Promise.all(
+  [...recurring, ...upcoming].map(async (event) => ({
+    event,
+    Content: (await render(event)).Content,
+  })),
+);
+---
+
+<BaseLayout title="Events">
+  <div class="mx-auto max-w-4xl px-4 py-12">
+    <h1 class="text-3xl font-bold">Events</h1>
+    <div class="mt-8 space-y-6">
+      {rendered.map(({ event, Content }) => (
+        <section class="rounded border border-neutral-200 p-5">
+          <h2 class="text-xl font-bold">{event.data.title}</h2>
+          <p class="mt-1 text-sm text-neutral-600">
+            {event.data.recurring ??
+              event.data.date.toLocaleString("en-US", { dateStyle: "long", timeStyle: "short" })}
+            {event.data.endTime && !event.data.recurring ? ` – ${event.data.endTime}` : ""}
+            {" · "}{event.data.address ?? event.data.location}
+          </p>
+          <div class="prose prose-neutral mt-3">
+            <Content />
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

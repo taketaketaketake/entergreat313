@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout title="Shop">
+  <div class="mx-auto max-w-4xl px-4 py-12">
+    <h1 class="text-3xl font-bold">Shop</h1>
+    <p class="mt-4 text-neutral-700">
+      Wear the mission. Every purchase supports returning citizens in Detroit.
+    </p>
+    <!-- Phase 3: storefront embed/links (site.shopUrl) once the merch platform is chosen -->
+    {site.shopUrl ? (
+      <a href={site.shopUrl} class="mt-8 inline-block rounded bg-neutral-900 px-6 py-3 font-semibold text-white">
+        Visit the Store
+      </a>
+    ) : (
+      <p class="mt-8 rounded border border-dashed border-neutral-300 p-4 text-sm text-neutral-500">
+        Merch store coming soon.
+      </p>
+    )}
+  </div>
+</BaseLayout>

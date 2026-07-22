@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout title="Contact">
+  <div class="mx-auto max-w-4xl px-4 py-12">
+    <h1 class="text-3xl font-bold">Contact</h1>
+    <div class="mt-6 space-y-2 text-neutral-700">
+      <p>{site.address}</p>
+      <p><a href={`tel:${site.phone}`} class="underline">{site.phone}</a></p>
+    </div>
+    <div class="mt-6 flex gap-4">
+      <a href={site.socials.facebook} class="underline">Facebook</a>
+      <a href={site.socials.instagram} class="underline">Instagram</a>
+    </div>
+  </div>
+</BaseLayout>
