@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ImageSlot from "../components/ImageSlot.astro";
 import { site, coreValues, quotes, testimonials } from "../data/site";
 ---
 
@@ -12,7 +13,12 @@ import { site, coreValues, quotes, testimonials } from "../data/site";
   </section>
 
   <section class="mx-auto max-w-4xl px-4 py-12">
-    <h2 class="text-2xl font-bold text-emerald-950">Who we serve</h2>
+    <ImageSlot
+      name="about/community"
+      alt="Enter-Great 313 members and supporters in community"
+      class="aspect-[5/2] w-full rounded-xl"
+    />
+    <h2 class="mt-10 text-2xl font-bold text-emerald-950">Who we serve</h2>
     <p class="mt-4 leading-relaxed text-stone-700">
       We are a community-based organization in Detroit supporting long-term-serving returning
       citizens as they transition back into society. Coming home after years inside means facing

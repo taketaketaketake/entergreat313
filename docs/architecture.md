@@ -9,6 +9,7 @@
 - Full page set: home, about, programs, events, partnerships, gallery, media, donate, letters, shop, contact — designed, mobile-first, sticky header with mobile menu
 - Letter builder island (`src/components/LetterBuilder.tsx`): 4 templates × section composer × destination directory → jsPDF download (lazy-loaded) or print window; fully client-side
 - Gallery page auto-globs `src/assets/gallery/`; media page renders the `videos` collection with an empty state
+- Image slot system (`src/components/ImageSlot.astro`): every photo location on the site maps to a conventional filename under `src/assets/images/` (documented in that folder's README); a dropped file appears optimized and responsive, a missing file renders a branded placeholder block. Homepage also has a stats band that renders only when `stats` in `src/data/site.ts` has entries.
 
 ### Not Yet Implemented / Blocked on Org Inputs
 

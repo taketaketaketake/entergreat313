@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+
+// Renders src/assets/images/<name>.(jpg|jpeg|png|webp) if it exists, otherwise a
+// branded placeholder block — so photo slots ship now and light up when Zach
+// drops files in. See src/assets/images/README.md for the filename conventions.
+
+interface Props {
+  name: string;
+  alt: string;
+  class?: string;
+  widths?: number[];
+}
+
+const { name, alt, class: className = "", widths = [400, 800, 1200] } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/images/**/*.{jpg,jpeg,png,webp}",
+  { eager: true },
+);
+
+const match = Object.entries(images).find(([path]) =>
+  path.replace("../assets/images/", "").replace(/\.(jpg|jpeg|png|webp)$/i, "") === name,
+)?.[1];
+---
+
+{
+  match ? (
+    <Image
+      src={match.default}
+      alt={alt}
+      widths={widths}
+      sizes="(max-width: 768px) 100vw, 50vw"
+      class:list={["object-cover", className]}
+    />
+  ) : (
+    <div
+      class:list={[
+        "flex select-none items-center justify-center overflow-hidden bg-emerald-900",
+        className,
+      ]}
+      role="img"
+      aria-label={alt}
+    >
+      <span class="text-5xl font-black tracking-tighter text-emerald-800">313</span>
+    </div>
+  )
+}

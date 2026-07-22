@@ -36,14 +36,44 @@ export const coreValues = [
   "Hope",
 ];
 
+// slug maps to the image slot src/assets/images/services/<slug>.*
 export const services = [
-  "Life Skills Development",
-  "Positive Mentorship",
-  "Peer Group Meetings",
-  "Employment Opportunities & Training",
-  "Financial Responsibility",
-  "Healthy & Clean Living Conditions",
+  {
+    slug: "life-skills",
+    title: "Life Skills Development",
+    blurb: "The practical, everyday knowledge that makes independence possible after years inside.",
+  },
+  {
+    slug: "mentorship",
+    title: "Positive Mentorship",
+    blurb: "One-on-one guidance from people who understand the journey home.",
+  },
+  {
+    slug: "peer-groups",
+    title: "Peer Group Meetings",
+    blurb: "Every Tuesday evening — a safe space to connect, be heard, and grow.",
+  },
+  {
+    slug: "employment",
+    title: "Employment Opportunities & Training",
+    blurb: "Interview prep, confidence, and employers who believe in second chances.",
+  },
+  {
+    slug: "financial",
+    title: "Financial Responsibility",
+    blurb: "Budgeting, banking, and building stability one paycheck at a time.",
+  },
+  {
+    slug: "housing",
+    title: "Healthy & Clean Living Conditions",
+    blurb: "Support toward safe, stable housing — the foundation everything else stands on.",
+  },
 ];
+
+// Impact numbers, TechTown-style big figures. Leave empty until the org provides
+// real numbers — the homepage band only renders when this has entries.
+// Example: { value: "120+", label: "Members supported" }
+export const stats: { value: string; label: string }[] = [];
 
 export const quotes = [
   "Re-entry is not just about returning home — it's about rebuilding identity, restoring confidence, and realizing the greatness that's always been within you.",

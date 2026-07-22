@@ -123,6 +123,30 @@ Rare — when Astro tooling usage changes.
 
 ---
 
+## src/assets/images/README.md
+
+**Purpose**
+Human-facing table of image-slot filenames: which file to drop where to make a photo appear on the site.
+
+**What Goes Inside**
+- Filename → page-location mapping for `ImageSlot` conventions
+- Photo sizing/style guidance
+
+**What Does NOT Go Inside**
+- Component implementation details
+
+**Audience**
+Humans (Zach adding photos) first.
+
+**Update Cadence**
+Whenever an image slot is added or removed.
+
+**Update Triggers**
+- A new `ImageSlot` usage is added to any page
+- An image slot is removed or renamed
+
+---
+
 ## implementation-plan.md
 
 **Purpose**

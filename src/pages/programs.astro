@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ImageSlot from "../components/ImageSlot.astro";
 import { getCollection, render } from "astro:content";
 
 const programs = (await getCollection("programs")).sort(
@@ -19,11 +20,18 @@ const rendered = await Promise.all(
     </p>
     <div class="mt-10 space-y-10">
       {rendered.map(({ program, Content }) => (
-        <section class="rounded-lg border border-stone-200 p-6">
+        <section class="overflow-hidden rounded-lg border border-stone-200">
+          <ImageSlot
+            name={`programs/${program.id}`}
+            alt={program.data.title}
+            class="aspect-[5/2] w-full"
+          />
+          <div class="p-6">
           <h2 class="text-2xl font-bold text-emerald-950">{program.data.title}</h2>
           <p class="mt-1 font-medium text-stone-600">{program.data.summary}</p>
           <div class="prose prose-stone mt-4 max-w-none leading-relaxed">
             <Content />
+          </div>
           </div>
         </section>
       ))}

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ImageSlot from "../components/ImageSlot.astro";
 import { getCollection, render } from "astro:content";
 
 const all = (await getCollection("events")).sort(
@@ -23,7 +24,13 @@ const rendered = await Promise.all(
     </p>
     <div class="mt-10 space-y-6">
       {rendered.map(({ event, Content }) => (
-        <section class="rounded-lg border border-stone-200 p-6">
+        <section class="overflow-hidden rounded-lg border border-stone-200">
+          <ImageSlot
+            name={`events/${event.id}`}
+            alt={event.data.title}
+            class="aspect-[5/2] w-full"
+          />
+          <div class="p-6">
           <h2 class="text-2xl font-bold text-emerald-950">{event.data.title}</h2>
           <p class="mt-1 font-medium text-stone-600">
             {event.data.recurring ??
@@ -33,6 +40,7 @@ const rendered = await Promise.all(
           </p>
           <div class="prose prose-stone mt-4 max-w-none leading-relaxed">
             <Content />
+          </div>
           </div>
         </section>
       ))}

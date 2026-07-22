@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import VideoEmbed from "../components/VideoEmbed.astro";
-import { site, services, testimonials, quotes } from "../data/site";
+import ImageSlot from "../components/ImageSlot.astro";
+import { site, services, stats, testimonials, quotes } from "../data/site";
 import { getCollection } from "astro:content";
 
 const programs = (await getCollection("programs")).sort((a, b) => a.data.order - b.data.order);
-const events = (await getCollection("events")).sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
 const featuredVideo = (await getCollection("videos"))
   .filter((v) => v.data.featured)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())[0];
@@ -13,27 +13,43 @@ const featuredVideo = (await getCollection("videos"))
 
 <BaseLayout title="Home">
   <section class="bg-stone-50">
-    <div class="mx-auto max-w-6xl px-4 py-20 lg:py-28">
-      <h1 class="max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-emerald-950 sm:text-5xl">
-        Rebuilding lives with support and opportunity.
-      </h1>
-      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-stone-700">
-        {site.mission}
-      </p>
-      <div class="mt-10 flex flex-wrap gap-4">
-        <a href="/donate" class="rounded-md bg-emerald-800 px-6 py-3 text-lg font-semibold text-white hover:bg-emerald-700">
-          Donate Now
-        </a>
-        <a href="/letters" class="rounded-md border-2 border-emerald-800 px-6 py-3 text-lg font-semibold text-emerald-900 hover:bg-emerald-50">
-          Write a Letter of Support
-        </a>
+    <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 lg:grid-cols-2 lg:py-24">
+      <div>
+        <h1 class="text-4xl font-extrabold leading-tight tracking-tight text-emerald-950 sm:text-5xl">
+          Rebuilding lives with support and opportunity.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-stone-700">
+          {site.mission}
+        </p>
+        <div class="mt-9 flex flex-wrap gap-4">
+          <a href="/donate" class="rounded-md bg-emerald-800 px-6 py-3 text-lg font-semibold text-white hover:bg-emerald-700">
+            Donate Now
+          </a>
+          <a href="/letters" class="rounded-md border-2 border-emerald-800 px-6 py-3 text-lg font-semibold text-emerald-900 hover:bg-emerald-50">
+            Write a Letter of Support
+          </a>
+        </div>
       </div>
-      <p class="mt-8 text-sm text-stone-600">
-        Support group every Tuesday, 6:00–7:30 PM · 1010 Antietam, Detroit ·
-        <a href="/events" class="font-semibold text-emerald-800 underline underline-offset-2">Come sit with us</a>
-      </p>
+      <ImageSlot
+        name="home/hero"
+        alt="Enter-Great 313 community members together in Detroit"
+        class="aspect-[4/5] w-full rounded-xl lg:justify-self-end"
+      />
     </div>
   </section>
+
+  {stats.length > 0 && (
+    <section class="border-y border-stone-200 bg-white">
+      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-3">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <p class="text-5xl font-extrabold tracking-tight text-emerald-800">{stat.value}</p>
+            <p class="mt-2 font-semibold text-stone-700">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
 
   <section class="bg-emerald-900">
     <blockquote class="mx-auto max-w-4xl px-4 py-14 text-center">
@@ -45,17 +61,48 @@ const featuredVideo = (await getCollection("videos"))
 
   <section class="mx-auto max-w-6xl px-4 py-16">
     <h2 class="text-3xl font-bold text-emerald-950">What we do</h2>
-    <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {services.map((service) => (
-        <li class="rounded-lg border border-stone-200 bg-white p-5 text-lg font-semibold text-stone-800">
-          {service}
-        </li>
+        <div class="overflow-hidden rounded-lg border border-stone-200 bg-white">
+          <ImageSlot
+            name={`services/${service.slug}`}
+            alt={service.title}
+            class="aspect-[3/2] w-full"
+          />
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-emerald-950">{service.title}</h3>
+            <p class="mt-1 text-sm leading-relaxed text-stone-600">{service.blurb}</p>
+          </div>
+        </div>
       ))}
-    </ul>
+    </div>
     <div class="mt-8">
       <a href="/programs" class="font-semibold text-emerald-800 underline underline-offset-4">
         See our programs in detail
       </a>
+    </div>
+  </section>
+
+  <section class="bg-emerald-950">
+    <div class="mx-auto grid max-w-6xl items-center gap-8 px-4 py-14 lg:grid-cols-2">
+      <ImageSlot
+        name="home/meeting"
+        alt="Tuesday night support group meeting"
+        class="aspect-video w-full rounded-xl"
+      />
+      <div>
+        <h2 class="text-3xl font-bold text-white">Tuesday nights, we're here.</h2>
+        <p class="mt-4 max-w-md text-lg leading-relaxed text-emerald-100">
+          Support group every Tuesday, 6:00–7:30 PM at 1010 Antietam, Detroit. Returning
+          citizens, family, and supporters — everyone is welcome, no referral needed.
+        </p>
+        <a
+          href="/events"
+          class="mt-6 inline-block rounded-md bg-white px-6 py-3 font-bold text-emerald-950 hover:bg-emerald-100"
+        >
+          Come sit with us
+        </a>
+      </div>
     </div>
   </section>
 
@@ -64,9 +111,16 @@ const featuredVideo = (await getCollection("videos"))
       <h2 class="text-3xl font-bold text-emerald-950">Programs</h2>
       <div class="mt-8 grid gap-6 md:grid-cols-2">
         {programs.map((program) => (
-          <a href="/programs" class="rounded-lg border border-stone-200 bg-white p-6 hover:border-emerald-700">
-            <h3 class="text-xl font-bold text-emerald-950">{program.data.title}</h3>
-            <p class="mt-2 leading-relaxed text-stone-700">{program.data.summary}</p>
+          <a href="/programs" class="group overflow-hidden rounded-lg border border-stone-200 bg-white hover:border-emerald-700">
+            <ImageSlot
+              name={`programs/${program.id}`}
+              alt={program.data.title}
+              class="aspect-[5/2] w-full"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-emerald-950 group-hover:underline">{program.data.title}</h3>
+              <p class="mt-2 leading-relaxed text-stone-700">{program.data.summary}</p>
+            </div>
           </a>
         ))}
       </div>
