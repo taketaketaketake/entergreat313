@@ -20,7 +20,6 @@ export const site = {
 export const nav = [
   { label: "About", href: "/about" },
   { label: "Programs", href: "/programs" },
-  { label: "Events", href: "/events" },
   { label: "Write a Letter", href: "/letters" },
   { label: "Contact", href: "/contact" },
 ];
