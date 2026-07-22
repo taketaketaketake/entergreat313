@@ -120,4 +120,11 @@ export const partners = [
     details: "raks1.org",
     url: "https://raks1.org",
   },
+  {
+    name: "Yard Line",
+    description:
+      "A jail and prison family support and visiting directory — helping families of incarcerated people navigate visitation procedures and find support while their loved one is inside.",
+    details: "yardlinechat.com",
+    url: "https://yardlinechat.com",
+  },
 ];
