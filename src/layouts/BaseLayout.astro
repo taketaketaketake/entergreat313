@@ -78,7 +78,7 @@ const orgSchema = {
         </a>
 
         <nav class="hidden items-center gap-x-5 text-[15px] font-medium lg:flex">
-          {nav.map((item) =>
+          {nav.filter((item) => !item.mobileOnly).map((item) =>
             item.menu ? (
               <div class="group relative" data-dropdown>
                 <button
