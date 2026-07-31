@@ -17,8 +17,38 @@ export const site = {
   shopUrl: "", // print-on-demand storefront
 };
 
-export const nav = [
-  { label: "Who We Are", href: "/who-we-are" },
+export type NavItem = {
+  label: string;
+  href: string;
+  // Optional dropdown panel, grouped into labelled columns.
+  menu?: { heading: string; items: { label: string; href: string }[] }[];
+};
+
+export const nav: NavItem[] = [
+  {
+    label: "Who We Are",
+    href: "/who-we-are",
+    menu: [
+      {
+        heading: "About Us",
+        items: [
+          { label: "Mission & Values", href: "/who-we-are" },
+          { label: "History", href: "/history" },
+          { label: "Our Programs", href: "/programs" },
+          { label: "Annual Reports & Financials", href: "/financials" },
+        ],
+      },
+      {
+        heading: "Our Community",
+        items: [
+          { label: "Partnerships", href: "/partnerships" },
+          { label: "Events", href: "/events" },
+          { label: "Media & Videos", href: "/media" },
+          { label: "Event Gallery", href: "/gallery" },
+        ],
+      },
+    ],
+  },
   { label: "Our Programs", href: "/programs" },
   { label: "Get Involved", href: "/get-involved" },
   { label: "Write a Letter", href: "/letters" },

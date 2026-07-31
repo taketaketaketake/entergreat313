@@ -78,17 +78,66 @@ const orgSchema = {
         </a>
 
         <nav class="hidden items-center gap-x-5 text-[15px] font-medium lg:flex">
-          {nav.map((item) => (
-            <a
-              href={item.href}
-              class:list={[
-                "hover:text-white",
-                currentPath === item.href ? "text-white underline underline-offset-8" : "text-emerald-100",
-              ]}
-            >
-              {item.label}
-            </a>
-          ))}
+          {nav.map((item) =>
+            item.menu ? (
+              <div class="group relative" data-dropdown>
+                <button
+                  type="button"
+                  data-dropdown-button
+                  aria-expanded="false"
+                  class:list={[
+                    "flex items-center gap-1 py-2 hover:text-white",
+                    item.menu.some((group) => group.items.some((link) => link.href === currentPath)) ||
+                    currentPath === item.href
+                      ? "text-white underline underline-offset-8"
+                      : "text-emerald-100",
+                  ]}
+                >
+                  {item.label}
+                  <span aria-hidden="true" class="text-[10px] leading-none">▾</span>
+                </button>
+                <div
+                  data-dropdown-panel
+                  class="invisible absolute left-1/2 top-full z-50 w-max -translate-x-1/2 opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+                >
+                  <div class="grid gap-x-12 gap-y-6 border-t-4 border-emerald-700 bg-emerald-900 px-8 py-7 sm:grid-cols-2">
+                    {item.menu.map((group) => (
+                      <div>
+                        <p class="text-sm font-bold uppercase tracking-wide text-emerald-300">
+                          {group.heading}
+                        </p>
+                        <ul class="mt-3 space-y-2.5">
+                          {group.items.map((link) => (
+                            <li>
+                              <a
+                                href={link.href}
+                                class:list={[
+                                  "block hover:text-white hover:underline underline-offset-4",
+                                  currentPath === link.href ? "text-white" : "text-emerald-100",
+                                ]}
+                              >
+                                {link.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <a
+                href={item.href}
+                class:list={[
+                  "hover:text-white",
+                  currentPath === item.href ? "text-white underline underline-offset-8" : "text-emerald-100",
+                ]}
+              >
+                {item.label}
+              </a>
+            ),
+          )}
           <a
             href="/donate"
             class="rounded-md bg-white px-4 py-2 font-semibold text-emerald-950 hover:bg-emerald-100"
@@ -115,9 +164,29 @@ const orgSchema = {
 
       <nav id="mobile-menu" class="hidden border-t border-emerald-900 bg-emerald-950 px-4 pb-4 lg:hidden">
         {nav.map((item) => (
-          <a href={item.href} class="block border-b border-emerald-900 py-3 font-medium text-emerald-100">
-            {item.label}
-          </a>
+          <div class="border-b border-emerald-900 py-3">
+            <a href={item.href} class="block font-medium text-emerald-100">{item.label}</a>
+            {item.menu && (
+              <div class="mt-3 space-y-4 border-l-2 border-emerald-800 pl-4">
+                {item.menu.map((group) => (
+                  <div>
+                    <p class="text-xs font-bold uppercase tracking-wide text-emerald-300">
+                      {group.heading}
+                    </p>
+                    <ul class="mt-1.5 space-y-1.5">
+                      {group.items.map((link) => (
+                        <li>
+                          <a href={link.href} class="block py-1 text-[15px] text-emerald-100">
+                            {link.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         ))}
       </nav>
     </header>
@@ -173,6 +242,39 @@ const orgSchema = {
       button?.addEventListener("click", () => {
         const open = menu?.classList.toggle("hidden") === false;
         button.setAttribute("aria-expanded", String(open));
+      });
+
+      // Desktop dropdowns open on hover/focus via CSS; this adds click-to-open for
+      // touch and keyboard, since hover never fires on a tap.
+      const dropdowns = document.querySelectorAll("[data-dropdown]");
+
+      const closeAll = () => {
+        dropdowns.forEach((dropdown) => {
+          dropdown.querySelector("[data-dropdown-panel]")?.classList.add("invisible", "opacity-0");
+          dropdown.querySelector("[data-dropdown-button]")?.setAttribute("aria-expanded", "false");
+        });
+      };
+
+      dropdowns.forEach((dropdown) => {
+        const trigger = dropdown.querySelector("[data-dropdown-button]");
+        const panel = dropdown.querySelector("[data-dropdown-panel]");
+
+        trigger?.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const wasOpen = trigger.getAttribute("aria-expanded") === "true";
+          closeAll();
+          if (!wasOpen) {
+            panel?.classList.remove("invisible", "opacity-0");
+            trigger.setAttribute("aria-expanded", "true");
+          }
+        });
+
+        dropdown.addEventListener("mouseleave", closeAll);
+      });
+
+      document.addEventListener("click", closeAll);
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeAll();
       });
     </script>
   </body>
