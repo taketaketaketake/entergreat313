@@ -20,8 +20,9 @@ export const site = {
 export type NavItem = {
   label: string;
   href: string;
-  // Optional dropdown panel, grouped into labelled columns.
-  menu?: { heading: string; items: { label: string; href: string }[] }[];
+  // Optional dropdown panel, grouped into columns. A group's heading is optional —
+  // a single-column menu reads fine without one.
+  menu?: { heading?: string; items: { label: string; href: string }[] }[];
   // Hidden from the desktop bar; still shown in the mobile menu.
   mobileOnly?: boolean;
 };
@@ -53,7 +54,19 @@ export const nav: NavItem[] = [
   },
   { label: "Our Programs", href: "/programs" },
   { label: "Get Involved", href: "/get-involved" },
-  { label: "Write a Letter", href: "/letters" },
+  {
+    label: "Tools & Resources",
+    href: "/get-involved",
+    menu: [
+      {
+        items: [
+          { label: "Write a Letter", href: "/letters" },
+          { label: "Partner With Us", href: "/partnerships" },
+          { label: "Come to a Meeting", href: "/events" },
+        ],
+      },
+    ],
+  },
   // Kept in the mobile menu only — the desktop bar stays short, and the footer
   // already carries the address and phone number.
   { label: "Contact", href: "/contact", mobileOnly: true },
