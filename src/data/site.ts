@@ -53,7 +53,18 @@ export const nav: NavItem[] = [
     ],
   },
   { label: "Our Programs", href: "/programs" },
-  { label: "Get Involved", href: "/get-involved" },
+  {
+    label: "Get Involved",
+    href: "/get-involved",
+    menu: [
+      {
+        items: [
+          { label: "Weekly Support Group Meetings", href: "/events" },
+          { label: "J.I.L.L. Program", href: "/programs#jill" },
+        ],
+      },
+    ],
+  },
   {
     label: "Tools & Resources",
     href: "/get-involved",

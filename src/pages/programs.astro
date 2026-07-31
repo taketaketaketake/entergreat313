@@ -23,7 +23,10 @@ const rendered = await Promise.all(
     </p>
     <div class="mt-10 grid grid-cols-2 gap-3 sm:gap-6">
       {rendered.map(({ program, Content }) => (
-        <section class="overflow-hidden rounded-lg border border-stone-200 bg-white">
+        <section
+          id={program.id}
+          class="scroll-mt-24 overflow-hidden rounded-lg border border-stone-200 bg-white"
+        >
           <ImageSlot
             name={`programs/${program.id}`}
             alt={program.data.title}
