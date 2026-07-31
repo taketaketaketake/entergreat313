@@ -52,7 +52,6 @@ export const nav: NavItem[] = [
       },
     ],
   },
-  { label: "Our Programs", href: "/programs" },
   {
     label: "Get Involved",
     href: "/get-involved",
