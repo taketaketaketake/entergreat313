@@ -1,0 +1,111 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+
+const ways = [
+  {
+    title: "Come to a Tuesday meeting",
+    body:
+      "Our weekly support group meets every Tuesday, 6:00–7:30 PM at 1010 Antietam, lower level, Detroit. Open to the justice impacted and the people who love them. No sign-up, no cost.",
+    href: "/events",
+    cta: "Meeting details",
+  },
+  {
+    title: "Write a letter of support",
+    body:
+      "A letter from the outside changes what a parole board sees and what a person inside believes. Our letter builder walks you through it, right in your browser.",
+    href: "/letters",
+    cta: "Write a letter",
+  },
+  {
+    title: "Donate",
+    body:
+      "Your gift pays for the everyday things that make reentry work — bus passes, work clothes, meeting space, and refreshments on a Tuesday night.",
+    href: "/donate",
+    cta: "Give today",
+  },
+  {
+    title: "Mentor or volunteer",
+    body:
+      "Returning citizens rebuild fastest alongside people who show up consistently. If you can give a few hours a month — mentoring, driving, teaching a skill, or helping at events — call us.",
+    href: `tel:${site.phone}`,
+    cta: `Call ${site.phone}`,
+  },
+  {
+    title: "Hire second chances",
+    body:
+      "Employers who look past a record find committed, grateful workers. Tell us what you need and we'll connect you with people preparing for exactly that work.",
+    href: "/contact",
+    cta: "Get in touch",
+  },
+  {
+    title: "Partner with us",
+    body:
+      "We work with organizations across Detroit serving the justice impacted. If your work overlaps with ours, let's not duplicate it — let's connect it.",
+    href: "/partnerships",
+    cta: "See our partners",
+  },
+  {
+    title: "Wear the mission",
+    body:
+      "Merch puts the message on the street and puts money back into the programs.",
+    href: "/shop",
+    cta: "Visit the shop",
+  },
+  {
+    title: "Share our story",
+    body:
+      "Follow us, share a post, or send this site to someone who needs it. Reaching one more person who just came home is worth more than you'd think.",
+    href: site.socials.facebook,
+    cta: "Follow on Facebook",
+  },
+];
+---
+
+<BaseLayout
+  title="Get Involved"
+  description="Volunteer, mentor, donate, hire, or partner with Enter-Great 313 to support returning citizens in Detroit. Weekly support group meetings every Tuesday."
+>
+  <section class="bg-stone-50">
+    <div class="mx-auto max-w-4xl px-4 py-16">
+      <h1 class="text-4xl font-extrabold tracking-tight text-emerald-950">Get involved</h1>
+      <p class="mt-6 text-lg leading-relaxed text-stone-700">
+        Reentry works when a whole community shows up. Here's how you can — whether you have an
+        hour, a skill, a job opening, or a few dollars.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-14">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {ways.map((way) => (
+        <div class="flex flex-col rounded-lg border border-stone-200 bg-white p-6">
+          <h2 class="text-lg font-bold text-emerald-950">{way.title}</h2>
+          <p class="mt-2 flex-1 text-sm leading-relaxed text-stone-600">{way.body}</p>
+          <a
+            href={way.href}
+            class="mt-4 font-semibold text-emerald-800 underline underline-offset-4"
+          >
+            {way.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-emerald-950">
+    <div class="mx-auto max-w-4xl px-4 py-14 text-center">
+      <h2 class="text-3xl font-bold text-white">Not sure where you fit?</h2>
+      <p class="mx-auto mt-4 max-w-xl leading-relaxed text-emerald-100">
+        Call and tell us what you've got — time, a trade, a truck, a job to fill. We'll find the
+        place where it matters most.
+      </p>
+      <a
+        href={`tel:${site.phone}`}
+        class="mt-6 inline-block rounded-md bg-white px-6 py-3 font-semibold text-emerald-950 hover:bg-emerald-100"
+      >
+        {site.phone}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

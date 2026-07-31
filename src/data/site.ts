@@ -18,20 +18,38 @@ export const site = {
 };
 
 export const nav = [
-  { label: "About", href: "/about" },
-  { label: "Programs", href: "/programs" },
+  { label: "Who We Are", href: "/who-we-are" },
+  { label: "Our Programs", href: "/programs" },
+  { label: "Get Involved", href: "/get-involved" },
   { label: "Write a Letter", href: "/letters" },
   { label: "Contact", href: "/contact" },
 ];
 
 // Secondary pages — footer only, keeps the navbar focused.
 export const footerNav = [
+  { label: "History", href: "/history" },
+  { label: "Annual Reports & Financials", href: "/financials" },
   { label: "Events", href: "/events" },
   { label: "Partnerships", href: "/partnerships" },
   { label: "Media", href: "/media" },
   { label: "Event Gallery", href: "/gallery" },
   { label: "Shop", href: "/shop" },
 ];
+
+// History page timeline. Add entries oldest-first; the page renders a
+// "coming soon" note while this is empty. Don't guess dates — get them from the org.
+// Example: { year: "2019", title: "First Tuesday meeting", body: "..." }
+export const history: { year: string; title: string; body: string }[] = [];
+
+// Annual reports and financial documents. Put the PDFs in `public/reports/` and
+// point `file` at the public path, e.g. "/reports/2025-annual-report.pdf".
+// The page shows a request-by-phone note while this is empty.
+export const annualReports: {
+  year: string;
+  title: string;
+  file: string;
+  note?: string;
+}[] = [];
 
 export const coreValues = [
   "Respect",
