@@ -70,7 +70,7 @@ const featuredVideo = (await getCollection("videos"))
           <ImageSlot
             name={`services/${service.slug}`}
             alt={service.title}
-            class="aspect-[3/2] w-full"
+            class="aspect-square w-full"
           />
           <div class="p-5">
             <h3 class="text-lg font-bold text-emerald-950">{service.title}</h3>
