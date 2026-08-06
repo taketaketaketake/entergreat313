@@ -72,6 +72,7 @@ export const nav: NavItem[] = [
       {
         items: [
           { label: "Write a Letter", href: "/letters" },
+          { label: "Build a Resume", href: "/resume" },
           { label: "Partner With Us", href: "/partnerships" },
           { label: "Come to a Meeting", href: "/events" },
         ],

@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ResumeBuilder from "../components/ResumeBuilder.tsx";
+---
+
+<BaseLayout
+  title="Build a Resume After Prison"
+  description="A free, private resume helper for returning citizens. Fill in your work, training, and skills — including work done while incarcerated — then use AI to format it. Nothing you type leaves your browser."
+>
+  <div class="mx-auto max-w-4xl px-4 py-16">
+    <h1 class="text-4xl font-extrabold tracking-tight text-emerald-950">Build your resume</h1>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-stone-700">
+      You have more work history than you think. Kitchen, maintenance, welding shop, tutoring —
+      that's experience, and it belongs on paper. Fill in what you can below, then let a free AI
+      tool put it in order for you.
+    </p>
+
+    <div class="mt-6 rounded-lg bg-stone-50 p-5 text-sm leading-relaxed text-stone-700">
+      <p class="font-semibold text-emerald-950">How this works</p>
+      <ol class="mt-2 list-decimal space-y-1 pl-5">
+        <li>Answer what you can below. Skip anything that doesn't apply.</li>
+        <li>Hit <strong>Copy everything</strong> at the bottom.</li>
+        <li>
+          Paste it into a free AI tool — <strong>ChatGPT</strong> (chatgpt.com) or
+          <strong>Claude</strong> (claude.ai). Both are free and both ask you to make an account.
+        </li>
+        <li>It writes the resume. Read every line before you send it anywhere.</li>
+      </ol>
+    </div>
+
+    <div class="mt-4 rounded-lg border-l-4 border-amber-600 bg-amber-50 p-5 text-sm leading-relaxed text-stone-800">
+      <p class="font-bold text-amber-900">Two things to know before you paste</p>
+      <p class="mt-2">
+        <strong>AI makes things up.</strong> It will invent a job title or a date to fill a hole if
+        you let it. The instructions this page adds tell it not to — but you still need to read
+        every line and make sure you can stand behind it in an interview. Anything you can't defend,
+        take out.
+      </p>
+      <p class="mt-2">
+        <strong>Whatever you paste goes to that company.</strong> ChatGPT and Claude are outside
+        companies, not us. Don't paste your Social Security number, your street address, or your
+        case details.
+      </p>
+    </div>
+
+    <div class="mt-10">
+      <ResumeBuilder client:load />
+    </div>
+
+    <div class="mt-12 rounded-lg border border-stone-200 p-6">
+      <h2 class="text-xl font-bold text-emerald-950">Want help with this in person?</h2>
+      <p class="mt-2 leading-relaxed text-stone-700">
+        Bring it to a Tuesday meeting. Somebody there has done this before and can sit with you.
+      </p>
+      <a
+        href="/events"
+        class="mt-4 inline-block font-semibold text-emerald-800 underline underline-offset-4"
+      >
+        See our weekly meeting
+      </a>
+    </div>
+  </div>
+</BaseLayout>
