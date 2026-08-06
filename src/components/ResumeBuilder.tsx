@@ -99,7 +99,7 @@ export default function ResumeBuilder() {
   return (
     <div class="space-y-8">
       {restored && (
-        <p class="rounded-md bg-amber-50 p-4 text-sm font-medium text-amber-900">
+        <p class="rounded-md bg-amber-50 p-4 text-lg font-medium text-amber-900">
           We brought back the draft you started on this device. Use “Erase everything” below if
           this isn't your computer.
         </p>
@@ -109,16 +109,17 @@ export default function ResumeBuilder() {
         {resumeSections.map((section) => (
           <div class="rounded-lg border border-stone-200 p-5">
             <div class="flex items-start justify-between gap-3">
-              <label class="font-bold text-emerald-950" for={`s-${section.id}`}>
+              <label class="text-2xl font-bold text-emerald-950" for={`s-${section.id}`}>
                 {section.heading}
                 {section.required && (
-                  <span class="ml-2 text-xs font-semibold text-amber-700">required</span>
+                  <span class="ml-2 text-base font-semibold text-amber-700">required</span>
                 )}
               </label>
               {!section.required && (
-                <label class="flex shrink-0 items-center gap-2 text-sm text-stone-600">
+                <label class="flex shrink-0 items-center gap-2 text-lg text-stone-600">
                   <input
                     type="checkbox"
+                    class="size-5"
                     checked={included[section.id] ?? true}
                     onChange={(e) =>
                       setIncluded({
@@ -131,17 +132,17 @@ export default function ResumeBuilder() {
                 </label>
               )}
             </div>
-            <p class="mt-1 text-sm leading-relaxed text-stone-600">{section.prompt}</p>
+            <p class="mt-2 text-lg leading-relaxed text-stone-600">{section.prompt}</p>
             {(included[section.id] ?? true) && (
               <textarea
                 id={`s-${section.id}`}
                 value={text[section.id] ?? ""}
-                rows={4}
+                rows={5}
                 placeholder={section.placeholder}
                 onInput={(e) =>
                   setText({ ...text, [section.id]: (e.target as HTMLTextAreaElement).value })
                 }
-                class="mt-3 w-full rounded-md border border-stone-300 p-2.5"
+                class="mt-3 w-full rounded-md border border-stone-300 p-3 text-lg leading-relaxed"
               />
             )}
           </div>
@@ -149,23 +150,23 @@ export default function ResumeBuilder() {
       </div>
 
       <fieldset class="rounded-lg border border-stone-200 p-5">
-        <legend class="px-1 font-bold text-emerald-950">Your record on the resume</legend>
-        <p class="text-sm leading-relaxed text-stone-600">
+        <legend class="px-1 text-2xl font-bold text-emerald-950">Your record on the resume</legend>
+        <p class="text-lg leading-relaxed text-stone-600">
           This is your call, and it changes the instructions the AI gets.
         </p>
-        <div class="mt-4 space-y-3">
+        <div class="mt-4 space-y-4">
           {disclosureOptions.map((option) => (
             <label class="flex gap-3">
               <input
                 type="radio"
                 name="disclosure"
-                class="mt-1.5 shrink-0"
+                class="mt-2 size-5 shrink-0"
                 checked={disclosure === option.id}
                 onChange={() => setDisclosure(option.id)}
               />
               <span>
-                <span class="font-semibold text-emerald-950">{option.label}</span>
-                <span class="mt-0.5 block text-sm leading-relaxed text-stone-600">
+                <span class="text-lg font-semibold text-emerald-950">{option.label}</span>
+                <span class="mt-0.5 block text-lg leading-relaxed text-stone-600">
                   {option.help}
                 </span>
               </span>
@@ -175,8 +176,8 @@ export default function ResumeBuilder() {
       </fieldset>
 
       <div class="rounded-lg bg-stone-50 p-5">
-        <p class="font-semibold text-emerald-950">Everything together, ready to copy</p>
-        <p class="mt-1 text-sm leading-relaxed text-stone-700">
+        <p class="text-2xl font-bold text-emerald-950">Everything together, ready to copy</p>
+        <p class="mt-2 text-lg leading-relaxed text-stone-700">
           This includes the instructions that tell the AI not to make anything up. Leave them in —
           they're the part that keeps the resume honest.
         </p>
@@ -185,36 +186,36 @@ export default function ResumeBuilder() {
           readonly
           rows={12}
           value={ready ? prompt : "Fill in the sections above and your text will appear here."}
-          class="mt-3 w-full rounded-md border border-stone-300 bg-white p-3 font-mono text-xs leading-relaxed"
+          class="mt-3 w-full rounded-md border border-stone-300 bg-white p-3 text-base leading-relaxed"
         />
         <div class="mt-4 flex flex-wrap items-center gap-4">
           <button
             type="button"
             disabled={!ready}
             onClick={copyAll}
-            class="rounded-md bg-emerald-800 px-6 py-3 font-bold text-white hover:bg-emerald-700 disabled:cursor-not-allowed disabled:bg-stone-300"
+            class="rounded-md bg-emerald-800 px-8 py-4 text-lg font-bold text-white hover:bg-emerald-700 disabled:cursor-not-allowed disabled:bg-stone-300"
           >
             {copied ? "Copied ✓" : "Copy everything"}
           </button>
           <button
             type="button"
             onClick={clearAll}
-            class="rounded-md border-2 border-stone-400 px-6 py-3 font-bold text-stone-700 hover:bg-stone-100"
+            class="rounded-md border-2 border-stone-400 px-8 py-4 text-lg font-bold text-stone-700 hover:bg-stone-100"
           >
             Erase everything
           </button>
         </div>
         {!ready && missingRequired.length > 0 && (
-          <p class="mt-3 text-sm font-semibold text-amber-800">
+          <p class="mt-3 text-lg font-semibold text-amber-800">
             Still needed: {missingRequired.map((s) => s.heading).join(", ")}
           </p>
         )}
       </div>
 
-      <label class="flex items-start gap-3 text-sm text-stone-600">
+      <label class="flex items-start gap-3 text-lg text-stone-600">
         <input
           type="checkbox"
-          class="mt-1 shrink-0"
+          class="mt-1.5 size-5 shrink-0"
           checked={saveDraft}
           onChange={(e) => {
             const on = (e.target as HTMLInputElement).checked;
@@ -234,7 +235,7 @@ export default function ResumeBuilder() {
         </span>
       </label>
 
-      <p class="text-xs leading-relaxed text-stone-500">
+      <p class="text-base leading-relaxed text-stone-500">
         Nothing you type here is sent to Enter-Great 313 or anyone else. It stays in your browser
         until you copy it yourself.
       </p>
