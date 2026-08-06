@@ -21,7 +21,7 @@ const rendered = await Promise.all(
       Built to help returning citizens rebuild their lives with guidance, encouragement, and real
       opportunities for growth.
     </p>
-    <div class="mt-10 grid grid-cols-2 gap-3 sm:gap-6">
+    <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
       {rendered.map(({ program, Content }) => (
         <section
           id={program.id}
@@ -32,12 +32,12 @@ const rendered = await Promise.all(
             alt={program.data.title}
             class="aspect-[4/3] w-full sm:aspect-[3/2]"
           />
-          <div class="p-3 sm:p-6">
-            <h2 class="text-base font-bold leading-snug text-emerald-950 sm:text-2xl">
+          <div class="p-5 sm:p-6">
+            <h2 class="text-xl font-bold leading-snug text-emerald-950 sm:text-2xl">
               {program.data.title}
             </h2>
-            <p class="mt-1 hidden font-medium text-stone-600 sm:block">{program.data.summary}</p>
-            <div class="prose prose-stone mt-2 max-w-none text-sm leading-relaxed sm:mt-4 sm:text-base">
+            <p class="mt-1 font-medium text-stone-600">{program.data.summary}</p>
+            <div class="prose prose-stone mt-4 max-w-none leading-relaxed">
               <Content />
             </div>
           </div>

@@ -47,7 +47,6 @@ export const nav: NavItem[] = [
         heading: "Our Community",
         items: [
           { label: "Partnerships", href: "/partnerships" },
-          { label: "Events", href: "/events" },
           { label: "Media & Videos", href: "/media" },
           { label: "Event Gallery", href: "/gallery" },
         ],
