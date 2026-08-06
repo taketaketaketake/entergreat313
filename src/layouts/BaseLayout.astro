@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { existsSync } from "node:fs";
 import { Image } from "astro:assets";
 import logoIcon from "../assets/logo/icon.png";
 import logoFull from "../assets/logo/enter-great-logo.png";
@@ -19,7 +20,11 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 // Pages that include the org name provide their full title; others get " | Enter-Great 313"
 const pageTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL(ogImagePath ?? "/og.png", Astro.site);
+// Fall back to the sitewide card if the page-specific one hasn't been created yet —
+// a missing og:image means shares render with no preview at all, which is worse
+// than a generic one. Checked at build time, so there's no runtime cost.
+const ogCandidate = ogImagePath && existsSync(`./public${ogImagePath}`) ? ogImagePath : "/og.png";
+const ogImage = new URL(ogCandidate, Astro.site);
 
 const orgSchema = {
   "@context": "https://schema.org",
