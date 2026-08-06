@@ -38,9 +38,9 @@ export const nav: NavItem[] = [
         heading: "About Us",
         items: [
           { label: "Mission & Values", href: "/who-we-are" },
-          { label: "History", href: "/history" },
+          { label: "Our Story", href: "/history" },
+          { label: "Leadership & Board", href: "/leadership" },
           { label: "Our Programs", href: "/programs" },
-          { label: "Annual Reports & Financials", href: "/financials" },
         ],
       },
       {
@@ -109,6 +109,46 @@ export const annualReports: {
   file: string;
   note?: string;
 }[] = [];
+
+// Leadership, board, and advisory members — names and titles exactly as the org
+// listed them on entergreat313.org. No bios were published there; the `bio` field
+// stays empty until the org supplies them (the page renders fine without).
+// Gaps to confirm with the org: "Dr. Helen" has no surname listed.
+export const leadership: {
+  group: string;
+  blurb?: string;
+  people: { name: string; role: string; bio?: string }[];
+}[] = [
+  {
+    group: "Executive leadership",
+    people: [
+      { name: "Brian McArn", role: "Executive Director & Re-entry Specialist" },
+      { name: "Alicia Hatcher", role: "President & Re-entry Specialist" },
+      { name: "Shawn Davis", role: "Treasurer & Re-entry Specialist" },
+    ],
+  },
+  {
+    group: "Program leadership",
+    people: [
+      {
+        name: "Karl Todd-Kelly-Bey",
+        role: "Youth Deterrent Program Lead & Re-entry Specialist",
+      },
+      { name: "Eric Walton", role: "Resource Coordinator & Re-entry Specialist" },
+      { name: "Charles Glover", role: "Security Lead & Re-entry Specialist" },
+      { name: "Craig Whilby", role: "Fundraiser & Re-entry Specialist" },
+      { name: "Keith Townes", role: "Sergeant of Arms & Re-entry Specialist" },
+    ],
+  },
+  {
+    group: "Board & advisory",
+    people: [
+      { name: "Stanley Baker", role: "Board Member at Large & Re-entry Specialist" },
+      { name: "Dakota Shananquet", role: "Advisory Board Member" },
+      { name: "Dr. Helen", role: "Advisory Board Member" },
+    ],
+  },
+];
 
 export const coreValues = [
   "Respect",

@@ -5,7 +5,6 @@ import ImageSlot from "../components/ImageSlot.astro";
 import { site, services, stats, testimonials, quotes } from "../data/site";
 import { getCollection } from "astro:content";
 
-const programs = (await getCollection("programs")).sort((a, b) => a.data.order - b.data.order);
 const featuredVideo = (await getCollection("videos"))
   .filter((v) => v.data.featured)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())[0];
@@ -54,18 +53,10 @@ const featuredVideo = (await getCollection("videos"))
     </section>
   )}
 
-  <section class="bg-emerald-900">
-    <blockquote class="mx-auto max-w-4xl px-4 py-14 text-center">
-      <p class="text-xl font-medium leading-relaxed text-white sm:text-2xl">
-        “{quotes[0]}”
-      </p>
-    </blockquote>
-  </section>
-
   <section class="mx-auto max-w-6xl px-4 py-16">
     <h2 class="text-3xl font-bold text-emerald-950">What we do</h2>
     <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {services.map((service) => (
+      {services.slice(0, 3).map((service) => (
         <div class="overflow-hidden rounded-lg border border-stone-200 bg-white">
           <ImageSlot
             name={`services/${service.slug}`}
@@ -105,27 +96,6 @@ const featuredVideo = (await getCollection("videos"))
         >
           Come sit with us
         </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-stone-50">
-    <div class="mx-auto max-w-6xl px-4 py-16">
-      <h2 class="text-3xl font-bold text-emerald-950">Programs</h2>
-      <div class="mt-8 grid gap-6 md:grid-cols-2">
-        {programs.map((program) => (
-          <a href="/programs" class="group overflow-hidden rounded-lg border border-stone-200 bg-white hover:border-emerald-700">
-            <ImageSlot
-              name={`programs/${program.id}`}
-              alt={program.data.title}
-              class="aspect-[5/2] w-full"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-emerald-950 group-hover:underline">{program.data.title}</h3>
-              <p class="mt-2 leading-relaxed text-stone-700">{program.data.summary}</p>
-            </div>
-          </a>
-        ))}
       </div>
     </div>
   </section>
