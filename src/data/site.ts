@@ -166,6 +166,41 @@ export const missionPoints = [
   "Support the transition into productive, independent members of society",
 ];
 
+// Goals: a short imperative, then the concrete mechanism. Each one maps to something
+// the org actually does today — no aspirational filler. Confirm wording with the org.
+export const goals = [
+  {
+    title: "Serve people coming home after decades",
+    detail:
+      "By building for long-term-serving returning citizens, not for someone home after ninety days. The needs are not the same.",
+  },
+  {
+    title: "Reduce recidivism",
+    detail:
+      "By making sure no one's first months home are spent alone — a weekly group, a mentor, and a number to call before things go wrong.",
+  },
+  {
+    title: "Get people hired",
+    detail:
+      "By running interview prep, covering work clothes, and connecting members to employers who don't stop reading at the background check.",
+  },
+  {
+    title: "Teach what the inside never did",
+    detail:
+      "By running the six-week J.I.L.L. series: counseling, digital skills, budgeting, and rebuilding credit from zero.",
+  },
+  {
+    title: "Get people stable",
+    detail:
+      "By working with partners on housing, state IDs, birth certificates, clothing, and bus passes — the paperwork and basics that stall everything else.",
+  },
+  {
+    title: "Lead from lived experience",
+    detail:
+      "By keeping this organization run by people who have come home themselves and stayed to hold the door for the next person.",
+  },
+];
+
 // Value descriptions come from the org's own about page on entergreat313.org.
 export const coreValues = [
   {
