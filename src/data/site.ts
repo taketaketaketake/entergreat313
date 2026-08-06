@@ -86,12 +86,9 @@ export const nav: NavItem[] = [
 // Secondary pages — footer only, keeps the navbar focused.
 export const footerNav = [
   { label: "History", href: "/history" },
-  { label: "Annual Reports & Financials", href: "/financials" },
-  { label: "Events", href: "/events" },
   { label: "Partnerships", href: "/partnerships" },
   { label: "Media", href: "/media" },
   { label: "Event Gallery", href: "/gallery" },
-  { label: "Shop", href: "/shop" },
 ];
 
 // History page timeline. Add entries oldest-first; the Milestones section only
