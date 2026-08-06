@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ImageSlot from "../components/ImageSlot.astro";
-import { site, history, leadership, quotes } from "../data/site";
+import { site, history, leadership } from "../data/site";
 
 const totalLeaders = leadership.reduce((n, g) => n + g.people.length, 0);
 ---
@@ -13,28 +13,28 @@ const totalLeaders = leadership.reduce((n, g) => n + g.people.length, 0);
   <section class="bg-stone-50">
     <div class="mx-auto max-w-4xl px-4 py-16">
       <h1 class="text-4xl font-extrabold tracking-tight text-emerald-950">Our story</h1>
-      <blockquote
-        class="mt-8 border-l-4 border-emerald-800 pl-5 text-xl font-medium leading-relaxed text-emerald-950"
-      >
-        “{quotes[0]}”
-      </blockquote>
     </div>
   </section>
 
   <section class="mx-auto max-w-4xl px-4 py-12">
-    <p class="text-lg leading-relaxed text-stone-700">
-      Enter-Great 313 was started in Detroit to address a specific problem: the men and women
-      coming home after long periods of incarceration were being handed a bus ticket and very
-      little else. Not a shortage of programs in the abstract — a shortage of programs built for
-      people who had been gone ten, twenty, thirty years.
+    <h2 class="text-2xl font-bold text-emerald-950">Led by people who have made the walk</h2>
+    <p class="mt-4 text-lg leading-relaxed text-stone-700">
+      {totalLeaders} people lead this organization, and nearly every one of them holds the title
+      Re-entry Specialist. That title isn't decorative. The executive director, the president, the
+      treasurer, the resource coordinator — they are people who came home themselves and then
+      stayed to hold the door for the next person.
     </p>
-    <p class="mt-5 leading-relaxed text-stone-700">
-      That's who we serve. We use the term <strong>LTSRC</strong> — Long Term Serving Returning
-      Citizens — because the distinction matters. Someone home after ninety days needs different
-      help than someone who went in before smartphones existed, whose family has moved on, whose
-      work history stopped decades ago, and who has to rebuild an identity from scratch while
-      also finding a job, an ID, and somewhere to sleep.
+    <p class="mt-4 leading-relaxed text-stone-700">
+      It changes what happens in the room. Nobody has to explain what a parole condition feels
+      like, or why a job application asks a question you dread. That shared footing is the
+      reason people keep showing up.
     </p>
+    <a
+      href="/leadership"
+      class="mt-6 inline-block font-semibold text-emerald-800 underline underline-offset-4"
+    >
+      Meet the leadership and board
+    </a>
 
     <ImageSlot
       name="about/community"
@@ -45,24 +45,14 @@ const totalLeaders = leadership.reduce((n, g) => n + g.people.length, 0);
 
   <section class="bg-stone-50">
     <div class="mx-auto max-w-4xl px-4 py-12">
-      <h2 class="text-2xl font-bold text-emerald-950">Led by people who have made the walk</h2>
+      <h2 class="text-2xl font-bold text-emerald-950">Who we serve</h2>
       <p class="mt-4 leading-relaxed text-stone-700">
-        {totalLeaders} people lead this organization, and nearly every one of them holds the title
-        Re-entry Specialist. That title isn't decorative. The executive director, the treasurer,
-        the resource coordinator, the person who runs the youth deterrent work — they are people
-        who came home themselves and then stayed to hold the door for the next person.
+        We use the term <strong>LTSRC</strong> — Long Term Serving Returning Citizens — because the
+        distinction matters. Someone home after ninety days needs different help than someone who
+        went in before smartphones existed, whose family has moved on, whose work history stopped
+        decades ago, and who has to rebuild an identity from scratch while also finding a job, an
+        ID, and somewhere to sleep.
       </p>
-      <p class="mt-4 leading-relaxed text-stone-700">
-        It changes what happens in the room. Nobody has to explain what a parole condition feels
-        like, or why a job application asks a question you dread. That shared footing is the
-        reason people keep showing up.
-      </p>
-      <a
-        href="/leadership"
-        class="mt-6 inline-block font-semibold text-emerald-800 underline underline-offset-4"
-      >
-        Meet the leadership and board
-      </a>
     </div>
   </section>
 
