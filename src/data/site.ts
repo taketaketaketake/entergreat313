@@ -157,12 +157,37 @@ export const leadership: {
   },
 ];
 
+// The mission statement broken into its clauses for bulleted display. Wording is
+// kept faithful to `site.mission` above — edit both together if the org revises it.
+export const missionPoints = [
+  "Walk alongside returning citizens as they rebuild their lives",
+  "Provide hands-on support, mentorship, and tailored resources",
+  "Help individuals overcome barriers and regain confidence",
+  "Support the transition into productive, independent members of society",
+];
+
+// Value descriptions come from the org's own about page on entergreat313.org.
 export const coreValues = [
-  "Respect",
-  "Empowerment",
-  "Community",
-  "Accountability",
-  "Hope",
+  {
+    name: "Respect",
+    description: "Every returning citizen deserves dignity, understanding, and a fair chance.",
+  },
+  {
+    name: "Empowerment",
+    description: "Equipping people with the tools and confidence to stand on their own.",
+  },
+  {
+    name: "Community",
+    description: "Transformation happens within community, not in isolation.",
+  },
+  {
+    name: "Accountability",
+    description: "Personal responsibility and honest growth, held up by people who understand.",
+  },
+  {
+    name: "Hope",
+    description: "Hope is the core of re-entry — without it, nothing else holds.",
+  },
 ];
 
 // slug maps to the image slot src/assets/images/services/<slug>.*

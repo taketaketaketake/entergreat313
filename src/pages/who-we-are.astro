@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { site, coreValues, quotes } from "../data/site";
+import { site, coreValues, quotes, missionPoints } from "../data/site";
 ---
 
 <BaseLayout
@@ -9,8 +9,15 @@ import { site, coreValues, quotes } from "../data/site";
 >
   <section class="bg-stone-50">
     <div class="mx-auto max-w-4xl px-4 py-16">
-      <h1 class="text-4xl font-extrabold tracking-tight text-emerald-950">Who we are</h1>
-      <p class="mt-6 text-lg leading-relaxed text-stone-700">{site.mission}</p>
+      <h1 class="text-4xl font-extrabold tracking-tight text-emerald-950">Our Mission</h1>
+      <ul class="mt-6 space-y-3">
+        {missionPoints.map((point) => (
+          <li class="flex gap-3 text-lg leading-relaxed text-stone-700">
+            <span aria-hidden="true" class="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-emerald-800" />
+            <span>{point}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -30,11 +37,14 @@ import { site, coreValues, quotes } from "../data/site";
 
   <section class="bg-stone-50">
     <div class="mx-auto max-w-4xl px-4 py-12">
-      <h2 class="text-2xl font-bold text-emerald-950">Our values</h2>
-      <ul class="mt-6 flex flex-wrap gap-3">
+      <h2 class="text-2xl font-bold text-emerald-950">Values</h2>
+      <ul class="mt-6 space-y-3">
         {coreValues.map((value) => (
-          <li class="rounded-full border border-emerald-800 px-5 py-2 font-semibold text-emerald-900">
-            {value}
+          <li class="flex gap-3 leading-relaxed text-stone-700">
+            <span aria-hidden="true" class="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-emerald-800" />
+            <span>
+              <strong class="font-bold text-emerald-950">{value.name}</strong> — {value.description}
+            </span>
           </li>
         ))}
       </ul>
