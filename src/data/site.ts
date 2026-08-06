@@ -95,10 +95,17 @@ export const footerNav = [
   { label: "Shop", href: "/shop" },
 ];
 
-// History page timeline. Add entries oldest-first; the page renders a
-// "coming soon" note while this is empty. Don't guess dates — get them from the org.
+// History page timeline. Add entries oldest-first; the Milestones section only
+// renders once this has entries. Don't guess dates — get them from the org.
 // Example: { year: "2019", title: "First Tuesday meeting", body: "..." }
-export const history: { year: string; title: string; body: string }[] = [];
+// More milestones pending from the founder — see docs/founder-questions.md.
+export const history: { year: string; title: string; body: string }[] = [
+  {
+    year: "2024",
+    title: "Enter-Great 313 is founded",
+    body: "Founded in Detroit to serve long-term-serving returning citizens — people coming home after ten, twenty, or thirty years inside. The IRS granted 501(c)(3) status in May 2024.",
+  },
+];
 
 // Annual reports and financial documents. Put the PDFs in `public/reports/` and
 // point `file` at the public path, e.g. "/reports/2025-annual-report.pdf".
