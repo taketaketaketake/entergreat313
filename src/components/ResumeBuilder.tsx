@@ -40,6 +40,9 @@ export default function ResumeBuilder() {
   const [saveDraft, setSaveDraft] = useState(true);
   const [restored, setRestored] = useState(false);
   const [copied, setCopied] = useState(false);
+  // `copied` resets after a moment so the button label returns to normal. This one
+  // sticks, so the "now paste it here" links stay on screen while they're read.
+  const [everCopied, setEverCopied] = useState(false);
 
   // Restore once on mount.
   useEffect(() => {
@@ -74,6 +77,7 @@ export default function ResumeBuilder() {
     try {
       await navigator.clipboard.writeText(prompt);
       setCopied(true);
+      setEverCopied(true);
       setTimeout(() => setCopied(false), 2500);
     } catch {
       // Older mobile browsers block the clipboard API — select the text instead
@@ -89,6 +93,7 @@ export default function ResumeBuilder() {
     setText({});
     setDisclosure("omit");
     setRestored(false);
+    setEverCopied(false);
     try {
       localStorage.removeItem(STORAGE_KEY);
     } catch {
@@ -209,6 +214,32 @@ export default function ResumeBuilder() {
           <p class="mt-3 text-lg font-semibold text-amber-800">
             Still needed: {missingRequired.map((s) => s.heading).join(", ")}
           </p>
+        )}
+
+        {everCopied && (
+          <div class="mt-5 rounded-md border-2 border-emerald-700 bg-white p-5">
+            <p class="text-lg font-bold text-emerald-950">
+              Copied. Now paste it into one of these:
+            </p>
+            <div class="mt-3 flex flex-wrap gap-3">
+              <a
+                href="https://chatgpt.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-md bg-emerald-800 px-6 py-3 text-lg font-bold text-white hover:bg-emerald-700"
+              >
+                Open ChatGPT ↗
+              </a>
+              <a
+                href="https://claude.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-md bg-emerald-800 px-6 py-3 text-lg font-bold text-white hover:bg-emerald-700"
+              >
+                Open Claude ↗
+              </a>
+            </div>
+          </div>
         )}
       </div>
 
