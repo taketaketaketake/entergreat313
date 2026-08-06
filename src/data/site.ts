@@ -8,7 +8,9 @@ export const site = {
     "Enter-Great 313 is committed to walking alongside returning citizens as they rebuild their lives. Through hands-on support, mentorship, and tailored resources, we help individuals overcome barriers, regain confidence, and transition into productive, independent members of society.",
   address: "3127 E Canfield St, Detroit, MI 48207",
   phone: "313-444-9671",
-  donateUrl: "", // GiveButter campaign URL — get from the org
+  // The org's live GiveButter campaign — the same link their old site's "Donate Now"
+  // button points to. Their org-level Giving Hub is givebutter.com/enter-great313.
+  donateUrl: "https://givebutter.com/I55HtW",
   socials: {
     facebook: "https://www.facebook.com/EnterGreat313",
     instagram: "https://www.instagram.com/enter_great313",
