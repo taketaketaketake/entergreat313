@@ -8,3 +8,31 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Rendered markdown from content collections (programs, events). Tailwind's
+   preflight removes list markers and element margins, and we don't ship the
+   typography plugin — so style the handful of tags our content actually uses. */
+.markdown > * + * {
+  margin-top: 1rem;
+}
+
+.markdown ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.markdown li + li {
+  margin-top: 0.375rem;
+}
+
+.markdown strong {
+  font-weight: 700;
+  color: var(--color-emerald-950);
+}
+
+.markdown a {
+  font-weight: 600;
+  color: var(--color-emerald-800);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

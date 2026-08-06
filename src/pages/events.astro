@@ -70,7 +70,7 @@ const eventSchema = [...recurring, ...upcoming].map((event) => ({
             {event.data.endTime && !event.data.recurring ? ` – ${event.data.endTime}` : ""}
             {" · "}{event.data.address ?? event.data.location}
           </p>
-          <div class="prose prose-stone mt-4 max-w-none leading-relaxed">
+          <div class="markdown mt-4 leading-relaxed text-stone-700">
             <Content />
           </div>
           </div>
