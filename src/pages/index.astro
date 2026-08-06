@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import VideoEmbed from "../components/VideoEmbed.astro";
 import ImageSlot from "../components/ImageSlot.astro";
-import { site, services, stats, quotes } from "../data/site";
+import { site, services, stats } from "../data/site";
 import { getCollection } from "astro:content";
 
 const featuredVideo = (await getCollection("videos"))
@@ -135,7 +135,7 @@ const featuredVideo = (await getCollection("videos"))
 
   <section class="bg-emerald-950">
     <div class="mx-auto max-w-4xl px-4 py-16 text-center">
-      <h2 class="text-3xl font-bold text-white">“{quotes[1]}”</h2>
+      <h2 class="text-3xl font-bold text-white">Help someone come home and stay home.</h2>
       <a
         href="/donate"
         class="mt-8 inline-block rounded-md bg-white px-8 py-3 text-lg font-bold text-emerald-950 hover:bg-emerald-100"

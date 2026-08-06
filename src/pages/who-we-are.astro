@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ImageSlot from "../components/ImageSlot.astro";
-import { site, coreValues, quotes } from "../data/site";
+import { site, coreValues, quotes, services } from "../data/site";
 ---
 
 <BaseLayout
@@ -36,15 +36,44 @@ import { site, coreValues, quotes } from "../data/site";
 
   <section class="bg-stone-50">
     <div class="mx-auto max-w-4xl px-4 py-12">
-      <h2 class="text-2xl font-bold text-emerald-950">Our values</h2>
-      <ul class="mt-6 flex flex-wrap gap-3">
-        {coreValues.map((value) => (
-          <li class="rounded-full border border-emerald-800 px-5 py-2 font-semibold text-emerald-900">
-            {value}
-          </li>
+      <h2 class="text-2xl font-bold text-emerald-950">How we help</h2>
+      <p class="mt-3 leading-relaxed text-stone-700">
+        Two of these run as structured programs — the Tuesday support group and the six-week
+        J.I.L.L. series. The rest is ongoing, one person at a time, for as long as it takes.
+      </p>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2">
+        {services.map((service) => (
+          <div class="overflow-hidden rounded-lg border border-stone-200 bg-white">
+            <ImageSlot
+              name={`services/${service.slug}`}
+              alt={service.title}
+              class="aspect-[3/2] w-full"
+            />
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-emerald-950">{service.title}</h3>
+              <p class="mt-1 leading-relaxed text-stone-600">{service.blurb}</p>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
+      <a
+        href="/programs"
+        class="mt-8 inline-block font-semibold text-emerald-800 underline underline-offset-4"
+      >
+        See our programs in detail
+      </a>
     </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-4 py-12">
+    <h2 class="text-2xl font-bold text-emerald-950">Our values</h2>
+    <ul class="mt-6 flex flex-wrap gap-3">
+      {coreValues.map((value) => (
+        <li class="rounded-full border border-emerald-800 px-5 py-2 font-semibold text-emerald-900">
+          {value}
+        </li>
+      ))}
+    </ul>
   </section>
 
 </BaseLayout>
