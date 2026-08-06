@@ -8,15 +8,18 @@ import { site, nav, footerNav } from "../data/site";
 interface Props {
   title: string;
   description?: string;
+  // Path to a page-specific social share card in `public/`, e.g. "/og-resume.png".
+  // Must be 1200x630. Falls back to the sitewide card when omitted.
+  ogImagePath?: string;
 }
 
-const { title, description = site.tagline } = Astro.props;
+const { title, description = site.tagline, ogImagePath } = Astro.props;
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 // Pages that include the org name provide their full title; others get " | Enter-Great 313"
 const pageTitle = title.includes(site.name) ? title : `${title} | ${site.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL("/og.png", Astro.site);
+const ogImage = new URL(ogImagePath ?? "/og.png", Astro.site);
 
 const orgSchema = {
   "@context": "https://schema.org",
