@@ -128,7 +128,8 @@ export const leadership: {
     people: [
       { name: "Brian McArn", role: "Executive Director & Re-entry Specialist" },
       { name: "Alicia Hatcher", role: "President & Re-entry Specialist" },
-      { name: "Shawn Davis", role: "Treasurer & Re-entry Specialist" },
+      { name: "Shawn Davis", role: "Treasurer & Community Revitalization" },
+      { name: "Tony Kirby", role: "Secretary" },
     ],
   },
   {
@@ -143,12 +144,11 @@ export const leadership: {
     ],
   },
   {
-    group: "Board & advisory",
+    group: "Advisory Board",
     people: [
       { name: "Stanley Baker", role: "Board Member at Large & Re-entry Specialist" },
       { name: "Dakota Shananquet", role: "Advisory Board Member" },
       { name: "Dr. Helen", role: "Advisory Board Member" },
-      { name: "Tony Kirby", role: "Advisory Board Member" },
     ],
   },
 ];
