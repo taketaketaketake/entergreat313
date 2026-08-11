@@ -216,31 +216,32 @@ export default function ResumeBuilder() {
           </p>
         )}
 
-        {everCopied && (
-          <div class="mt-5 rounded-md border-2 border-emerald-700 bg-white p-5">
-            <p class="text-lg font-bold text-emerald-950">
-              Copied. Now paste it into one of these:
-            </p>
-            <div class="mt-3 flex flex-wrap gap-3">
-              <a
-                href="https://chatgpt.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="rounded-md bg-emerald-800 px-6 py-3 text-lg font-bold text-white hover:bg-emerald-700"
-              >
-                Open ChatGPT ↗
-              </a>
-              <a
-                href="https://claude.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="rounded-md bg-emerald-800 px-6 py-3 text-lg font-bold text-white hover:bg-emerald-700"
-              >
-                Open Claude ↗
-              </a>
-            </div>
+        <div class="mt-5 rounded-md border-2 border-emerald-700 bg-white p-5">
+          <p class="text-lg font-bold text-emerald-950">
+            {everCopied ? "Copied. Now paste it into one of these:" : "Then paste it into one of these:"}
+          </p>
+          <div class="mt-3 flex flex-wrap gap-3">
+            <a
+              href="https://chatgpt.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-md bg-emerald-800 px-6 py-3 text-lg font-bold text-white hover:bg-emerald-700"
+            >
+              Open ChatGPT ↗
+            </a>
+            <a
+              href="https://claude.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-md bg-emerald-800 px-6 py-3 text-lg font-bold text-white hover:bg-emerald-700"
+            >
+              Open Claude ↗
+            </a>
           </div>
-        )}
+          <p class="mt-2 text-base text-stone-600">
+            These open in a new tab, so you won't lose what you typed here.
+          </p>
+        </div>
       </div>
 
       <label class="flex items-start gap-3 text-lg text-stone-600">
