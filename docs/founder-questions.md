@@ -78,13 +78,12 @@ page closely; it's how they judge whether an organization is real. Bios are the 
 *Program leadership*
 - [ ] Karl Todd-Kelly-Bey — Youth Deterrent Program Lead & Re-entry Specialist
 - [ ] Eric Walton — Resource Coordinator & Re-entry Specialist
-- [ ] Charles Glover — Security Lead & Re-entry Specialist
 - [ ] Craig Whilby — Fundraiser & Re-entry Specialist
-- [ ] Keith Townes — Sergeant of Arms & Re-entry Specialist
 
 *Board & advisory*
 - [ ] Stanley Baker — Board Member at Large & Re-entry Specialist
 - [ ] Dakota Shananquet — Advisory Board Member
+- [ ] Tony Kirby — Advisory Board Member
 - [ ] **Dr. Helen — Advisory Board Member.** We only have a first name. Need her **full name**,
   what the doctorate is in, and her professional affiliation. A credentialed advisor is worth
   real money in a grant application, but only if she's fully identified — right now the entry

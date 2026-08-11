@@ -139,9 +139,7 @@ export const leadership: {
         role: "Youth Deterrent Program Lead & Re-entry Specialist",
       },
       { name: "Eric Walton", role: "Resource Coordinator & Re-entry Specialist" },
-      { name: "Charles Glover", role: "Security Lead & Re-entry Specialist" },
       { name: "Craig Whilby", role: "Fundraiser & Re-entry Specialist" },
-      { name: "Keith Townes", role: "Sergeant of Arms & Re-entry Specialist" },
     ],
   },
   {
@@ -150,6 +148,7 @@ export const leadership: {
       { name: "Stanley Baker", role: "Board Member at Large & Re-entry Specialist" },
       { name: "Dakota Shananquet", role: "Advisory Board Member" },
       { name: "Dr. Helen", role: "Advisory Board Member" },
+      { name: "Tony Kirby", role: "Advisory Board Member" },
     ],
   },
 ];
