@@ -241,6 +241,42 @@ export default function ResumeBuilder() {
           <p class="mt-2 text-base text-stone-600">
             These open in a new tab, so you won't lose what you typed here.
           </p>
+
+          <div class="mt-6 border-t border-stone-200 pt-5">
+            <p class="text-lg font-bold text-emerald-950">Not sure how to paste? Watch this.</p>
+            <div class="mt-4 flex flex-col gap-6 sm:flex-row sm:items-start">
+              <div class="pd-stage" role="img" aria-label="Animation of pasting on a phone: press and hold the typing box, tap the Paste button that pops up, and the text appears in the box.">
+                <div class="pd-bar">ChatGPT</div>
+                <div class="pd-input">
+                  <span class="pd-hint">Ask anything</span>
+                  <span class="pd-lines" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </span>
+                </div>
+                <div class="pd-send" aria-hidden="true">↑</div>
+                <div class="pd-paste" aria-hidden="true">Paste</div>
+                <div class="pd-finger" aria-hidden="true"></div>
+              </div>
+              <ol class="list-decimal space-y-3 pl-5 text-lg leading-relaxed text-stone-700">
+                <li>
+                  Find the box at the bottom where you type. Press your finger on it and{" "}
+                  <strong>hold it there</strong> — about two seconds. Don't let go right away.
+                </li>
+                <li>
+                  A small black <strong>Paste</strong> button pops up. Take your finger off, then tap
+                  that button.
+                </li>
+                <li>Your writing fills the box. Tap the arrow to send it.</li>
+              </ol>
+            </div>
+            <p class="mt-5 text-lg leading-relaxed text-stone-700">
+              <strong>On a computer instead?</strong> Click inside the box where you type, then hold
+              down the <strong>Ctrl</strong> key and press the <strong>V</strong> key. On a Mac, hold{" "}
+              <strong>Command</strong> and press <strong>V</strong>.
+            </p>
+          </div>
         </div>
       </div>
 
